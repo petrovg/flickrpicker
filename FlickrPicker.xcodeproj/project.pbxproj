@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F61677DE6A00156B29 /* FlickrPicker.m */; };
 		00DDE5751670F663009E811A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5741670F663009E811A /* Foundation.framework */; };
 		00DDE57A1670F663009E811A /* FPFlickrImagePickerController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DDE5791670F663009E811A /* FPFlickrImagePickerController.h */; };
 		00DDE57C1670F663009E811A /* FPFlickrImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE57B1670F663009E811A /* FPFlickrImagePickerController.m */; };
@@ -24,7 +25,19 @@
 		00DDE5AD167106EA009E811A /* PAFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5AC167106EA009E811A /* PAFViewController.m */; };
 		00DDE5B2167112E4009E811A /* libFlickrPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5711670F663009E811A /* libFlickrPicker.a */; };
 		00DDE5B41671136D009E811A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B31671136D009E811A /* CFNetwork.framework */; };
+		00DDE5B616720E2C009E811A /* libObjectiveFlickr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */; };
+		00DDE5B916721EE9009E811A /* FPPhotosetTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		003810F21677D0ED00156B29 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00DDE5841671053F009E811A /* ObjectiveFlickr.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6ABF72E60F939BE600B9179E;
+			remoteInfo = "ObjectiveFlickr (library)";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		00DDE56F1670F663009E811A /* CopyFiles */ = {
@@ -40,6 +53,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		003810F51677DE6A00156B29 /* FlickrPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPicker.h; sourceTree = "<group>"; };
+		003810F61677DE6A00156B29 /* FlickrPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPicker.m; sourceTree = "<group>"; };
 		00DDE5711670F663009E811A /* libFlickrPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlickrPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DDE5741670F663009E811A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		00DDE5781670F663009E811A /* FlickrPicker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickrPicker-Prefix.pch"; sourceTree = "<group>"; };
@@ -62,6 +77,9 @@
 		00DDE5AB167106EA009E811A /* PAFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAFViewController.h; sourceTree = "<group>"; };
 		00DDE5AC167106EA009E811A /* PAFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAFViewController.m; sourceTree = "<group>"; };
 		00DDE5B31671136D009E811A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveFlickr.a; path = "../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos/libObjectiveFlickr.a"; sourceTree = "<group>"; };
+		00DDE5B716721EE9009E811A /* FPPhotosetTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPhotosetTableCell.h; sourceTree = "<group>"; };
+		00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPhotosetTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00DDE5B616720E2C009E811A /* libObjectiveFlickr.a in Frameworks */,
 				00DDE5B41671136D009E811A /* CFNetwork.framework in Frameworks */,
 				00DDE5B2167112E4009E811A /* libFlickrPicker.a in Frameworks */,
 				00DDE592167106EA009E811A /* UIKit.framework in Frameworks */,
@@ -89,9 +108,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		003810EE1677D0ED00156B29 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				003810F31677D0ED00156B29 /* libObjectiveFlickr.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		00DDE5661670F663009E811A = {
 			isa = PBXGroup;
 			children = (
+				00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */,
 				00DDE5B31671136D009E811A /* CFNetwork.framework */,
 				00DDE5841671053F009E811A /* ObjectiveFlickr.xcodeproj */,
 				00DDE5761670F663009E811A /* Source */,
@@ -126,6 +154,10 @@
 			children = (
 				00DDE5791670F663009E811A /* FPFlickrImagePickerController.h */,
 				00DDE57B1670F663009E811A /* FPFlickrImagePickerController.m */,
+				00DDE5B716721EE9009E811A /* FPPhotosetTableCell.h */,
+				00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */,
+				003810F51677DE6A00156B29 /* FlickrPicker.h */,
+				003810F61677DE6A00156B29 /* FlickrPicker.m */,
 			);
 			name = Source;
 			path = FlickrPicker;
@@ -231,6 +263,12 @@
 			mainGroup = 00DDE5661670F663009E811A;
 			productRefGroup = 00DDE5721670F663009E811A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 003810EE1677D0ED00156B29 /* Products */;
+					ProjectRef = 00DDE5841671053F009E811A /* ObjectiveFlickr.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				00DDE5701670F663009E811A /* FlickrPicker */,
@@ -238,6 +276,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		003810F31677D0ED00156B29 /* libObjectiveFlickr.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libObjectiveFlickr.a;
+			remoteRef = 003810F21677D0ED00156B29 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00DDE58E167106EA009E811A /* Resources */ = {
@@ -260,6 +308,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				00DDE57C1670F663009E811A /* FPFlickrImagePickerController.m in Sources */,
+				00DDE5B916721EE9009E811A /* FPPhotosetTableCell.m in Sources */,
+				003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +424,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PickAFlick/PickAFlick-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../objectiveflickr/**";
 				INFOPLIST_FILE = "PickAFlick/PickAFlick-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -386,7 +441,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PickAFlick/PickAFlick-Prefix.pch";
+				HEADER_SEARCH_PATHS = "../objectiveflickr/**";
 				INFOPLIST_FILE = "PickAFlick/PickAFlick-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos\"",
+				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -412,6 +472,7 @@
 				00DDE5811670F663009E811A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00DDE5AE167106EA009E811A /* Build configuration list for PBXNativeTarget "PickAFlick" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +481,7 @@
 				00DDE5B0167106EA009E811A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

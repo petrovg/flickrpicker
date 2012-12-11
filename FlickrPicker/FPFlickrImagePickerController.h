@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ObjectiveFlickr.h"
+
 
 //
 // This controller is a table, which shows a list of the available
@@ -15,7 +17,7 @@
 // recently added photos
 //
 
-@interface FPFlickrImagePickerController : UITableViewController
+@interface FPFlickrImagePickerController : UITableViewController <OFFlickrAPIRequestDelegate, UITableViewDelegate>
 
 // The delegate that will be notified when the image picking is complete
 @property (weak, nonatomic) id <UITableViewDelegate> delegate;
