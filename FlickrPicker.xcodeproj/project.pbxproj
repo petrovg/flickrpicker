@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F61677DE6A00156B29 /* FlickrPicker.m */; };
+		003810FA16791E6000156B29 /* NSDictionary+Photoset.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F916791E6000156B29 /* NSDictionary+Photoset.m */; };
 		00DDE5751670F663009E811A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5741670F663009E811A /* Foundation.framework */; };
 		00DDE57A1670F663009E811A /* FPFlickrImagePickerController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DDE5791670F663009E811A /* FPFlickrImagePickerController.h */; };
 		00DDE57C1670F663009E811A /* FPFlickrImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE57B1670F663009E811A /* FPFlickrImagePickerController.m */; };
@@ -55,6 +56,8 @@
 /* Begin PBXFileReference section */
 		003810F51677DE6A00156B29 /* FlickrPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPicker.h; sourceTree = "<group>"; };
 		003810F61677DE6A00156B29 /* FlickrPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPicker.m; sourceTree = "<group>"; };
+		003810F816791E6000156B29 /* NSDictionary+Photoset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Photoset.h"; sourceTree = "<group>"; };
+		003810F916791E6000156B29 /* NSDictionary+Photoset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Photoset.m"; sourceTree = "<group>"; };
 		00DDE5711670F663009E811A /* libFlickrPicker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFlickrPicker.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DDE5741670F663009E811A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		00DDE5781670F663009E811A /* FlickrPicker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickrPicker-Prefix.pch"; sourceTree = "<group>"; };
@@ -158,6 +161,8 @@
 				00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */,
 				003810F51677DE6A00156B29 /* FlickrPicker.h */,
 				003810F61677DE6A00156B29 /* FlickrPicker.m */,
+				003810F816791E6000156B29 /* NSDictionary+Photoset.h */,
+				003810F916791E6000156B29 /* NSDictionary+Photoset.m */,
 			);
 			name = Source;
 			path = FlickrPicker;
@@ -310,6 +315,7 @@
 				00DDE57C1670F663009E811A /* FPFlickrImagePickerController.m in Sources */,
 				00DDE5B916721EE9009E811A /* FPPhotosetTableCell.m in Sources */,
 				003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */,
+				003810FA16791E6000156B29 /* NSDictionary+Photoset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

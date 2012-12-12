@@ -9,6 +9,7 @@
 #import "FPFlickrImagePickerController.h"
 #import "FPPhotosetTableCell.h"
 #import "FlickrPicker.h"
+#import "NSDictionary+Photoset.h"
 
 @interface FPFlickrImagePickerController ()
 
@@ -19,14 +20,6 @@
 
 @implementation FPFlickrImagePickerController
 
-void requestPhotosets(OFFlickrAPIRequest *request)
-{
-    // Initialise the context and request and ask for the photoset list
-    NSLog(@"View is loading, getting pictures");
-    [request setSessionInfo:@"Getting sets"];
-    [request callAPIMethodWithGET:@"flickr.photosets.getList" arguments:nil];
-}
-
 -(void) viewDidLoad
 {
     // If we are not authenticated, authenticate now
@@ -34,7 +27,11 @@ void requestPhotosets(OFFlickrAPIRequest *request)
     if (!context.OAuthToken.length)
     {
         [[FlickrPicker sharedFlickrPicker] setBlockToRunWhenAuthorized:^{
-            NSLog(@"OK, get photosets and refresh the table view %@ now", self.tableView);
+            NSLog(@"OK, getting photosets and refresh the table view %@ now", self.tableView);
+            [[FlickrPicker sharedFlickrPicker] getPhotosets:^(NSArray *photosets) {
+                self.collatedPhotosets = [self collatePhotosets:photosets];
+                NSLog(@"Collated photosets are %@", self.collatedPhotosets);
+                }];
             }];
         [[FlickrPicker sharedFlickrPicker] authorize];
     }
@@ -48,7 +45,6 @@ void requestPhotosets(OFFlickrAPIRequest *request)
 }
 
 #pragma mark UITableViewDataSource
-
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     return self.collatedPhotosets.count;
@@ -59,7 +55,7 @@ void requestPhotosets(OFFlickrAPIRequest *request)
     return [[self.collatedPhotosets objectAtIndex:section] count];
 }
 
-NSArray* collatePhotosets(NSArray* rawPhotosets)
+-(NSArray *) collatePhotosets:(NSArray*) rawPhotosets
 {
     NSMutableArray *sections = [[NSMutableArray alloc] initWithCapacity:30];
     UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
