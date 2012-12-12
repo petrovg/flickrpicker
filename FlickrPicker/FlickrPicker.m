@@ -7,9 +7,17 @@
 //
 
 #import "FlickrPicker.h"
+#import <UIKit/UIKit.h>
 
 NSString *kStoredAuthTokenKeyName = @"FlickrOAuthToken";
 NSString *kStoredAuthTokenSecretKeyName = @"FlickrOAuthTokenSecret";
+
+@interface FlickrPicker ()
+
+@property (nonatomic, strong) NSString *userId;
+
+@end
+
 
 @implementation FlickrPicker
 {
@@ -27,6 +35,13 @@ NSString *kStoredAuthTokenSecretKeyName = @"FlickrOAuthTokenSecret";
     return flickrPicker;
 }
 
+-(void)authorize
+{
+    [self.flickrRequest setSessionInfo:@"kFetchRequestTokenStep"];
+    [self.flickrRequest fetchOAuthRequestTokenWithCallbackURL:[NSURL URLWithString:@"flickrpicker://auth"]];
+}
+
+# pragma mark flickr request and context properties
 - (OFFlickrAPIContext *)flickrContext
 {
     if (!flickrContext) {
@@ -56,10 +71,29 @@ NSString *kStoredAuthTokenSecretKeyName = @"FlickrOAuthTokenSecret";
 	return flickrRequest;
 }
 
--(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didObtainOAuthAccessToken:(NSString *)inAccessToken secret:(NSString *)inSecret userFullName:(NSString *)inFullName userName:(NSString *)inUserName userNSID:(NSString *)inNSID
+#pragma mark OFFlickrAPIRequestDelegate
+-(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didObtainOAuthRequestToken:(NSString *)inRequestToken secret:(NSString *)inSecret
 {
-    NSLog(@"Got access token: %@, secret %@, user full name", inAccessToken, inSecret, inFullName);
+    NSLog(@"Got token: %@ and secret: %@", inRequestToken, inSecret);
+    [[[FlickrPicker sharedFlickrPicker] flickrContext] setOAuthToken:inRequestToken];
+    [[[FlickrPicker sharedFlickrPicker] flickrContext] setOAuthTokenSecret:inSecret];
+    NSURL *authURL = [[FlickrPicker sharedFlickrPicker].flickrContext userAuthorizationURLWithRequestToken:inRequestToken requestedPermission:OFFlickrReadPermission];
+    NSLog(@"Opening authURL %@", authURL);
+    [[UIApplication sharedApplication] openURL:authURL];
 }
 
+-(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didObtainOAuthAccessToken:(NSString *)inAccessToken secret:(NSString *)inSecret userFullName:(NSString *)inFullName userName:(NSString *)inUserName userNSID:(NSString *)inNSID
+{
+    NSLog(@"Got access token: %@, secret %@, user full name %@", inAccessToken, inSecret, inFullName);
+    self.flickrContext.OAuthToken = inAccessToken;
+    self.flickrContext.OAuthTokenSecret = inSecret;
+    self.userId = inNSID;
+    self.blockToRunWhenAuthorized();
+}
+
+-(void) flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError
+{
+    NSLog(@"Error : %@", inError);
+}
 
 @end

@@ -13,7 +13,10 @@
 
 @property (nonatomic, strong, readonly) OFFlickrAPIContext *flickrContext;
 @property (nonatomic, strong, readonly) OFFlickrAPIRequest *flickrRequest;
+@property (nonatomic, strong, readonly) NSString *userId;
+@property (nonatomic, strong) void (^blockToRunWhenAuthorized)(void);
 
 +(FlickrPicker*)sharedFlickrPicker;
+-(void) authorize;
 
 @end

@@ -33,34 +33,18 @@ void requestPhotosets(OFFlickrAPIRequest *request)
     OFFlickrAPIContext *context = [FlickrPicker sharedFlickrPicker].flickrContext;
     if (!context.OAuthToken.length)
     {
-        OFFlickrAPIRequest *request = [FlickrPicker sharedFlickrPicker].flickrRequest;
-        request.delegate = self;
-        [request setSessionInfo:@"kFetchRequestTokenStep"];
-        [request fetchOAuthRequestTokenWithCallbackURL:[NSURL URLWithString:@"flickrpicker://auth"]];
+        [[FlickrPicker sharedFlickrPicker] setBlockToRunWhenAuthorized:^{
+            NSLog(@"OK, get photosets and refresh the table view %@ now", self.tableView);
+            }];
+        [[FlickrPicker sharedFlickrPicker] authorize];
     }
     else {
-        NSLog(@"Already authenticated");
+        NSLog(@"Already authorized");
     }
     
     // Init the table view
     [self.tableView registerClass:[FPPhotosetTableCell class] forCellReuseIdentifier:@"PhotosetCell"];
     
-}
-
-#pragma mark OFFlickrAPIRequestDelegate
--(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didObtainOAuthRequestToken:(NSString *)inRequestToken secret:(NSString *)inSecret
-{
-    NSLog(@"Got token: %@ and secret: %@", inRequestToken, inSecret);
-    [[[FlickrPicker sharedFlickrPicker] flickrContext] setOAuthToken:inRequestToken];
-    [[[FlickrPicker sharedFlickrPicker] flickrContext] setOAuthTokenSecret:inSecret];
-    NSURL *authURL = [[FlickrPicker sharedFlickrPicker].flickrContext userAuthorizationURLWithRequestToken:inRequestToken requestedPermission:OFFlickrReadPermission];
-    NSLog(@"Opening authURL %@", authURL);
-    [[UIApplication sharedApplication] openURL:authURL];
-}
-
--(void) flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didFailWithError:(NSError *)inError
-{
-    NSLog(@"Error : %@", inError);
 }
 
 #pragma mark UITableViewDataSource
