@@ -31,7 +31,7 @@
             NSLog(@"OK, getting photosets and refresh the table view %@ now", self.tableView);
             [[FlickrPicker sharedFlickrPicker] getPhotosets:^(NSArray *photosets) {
                 // This will run when the photosets are here
-                self.collatedPhotosets = [self collatePhotosets:photosets];
+                self.collatedPhotosets = collatePhotosets(photosets);
                 NSLog(@"Collated photosets are %@", self.collatedPhotosets);
                 [self.tableView reloadData];
                 }];
@@ -47,18 +47,7 @@
     
 }
 
-#pragma mark UITableViewDataSource
--(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return self.collatedPhotosets.count;
-}
-
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [[self.collatedPhotosets objectAtIndex:section] count];
-}
-
--(NSArray *) collatePhotosets:(NSArray*) rawPhotosets
+NSArray* collatePhotosets(NSArray* rawPhotosets)
 {
     NSMutableArray *sections = [[NSMutableArray alloc] initWithCapacity:30];
     UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
@@ -72,6 +61,18 @@
         [[sections objectAtIndex:sectionIndex] addObject:photoset];
     }
     return [NSArray arrayWithArray:sections];
+}
+
+
+#pragma mark UITableViewDataSource
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return self.collatedPhotosets.count;
+}
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [[self.collatedPhotosets objectAtIndex:section] count];
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
