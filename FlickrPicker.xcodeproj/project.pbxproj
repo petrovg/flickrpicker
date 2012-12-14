@@ -28,6 +28,7 @@
 		00DDE5B41671136D009E811A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B31671136D009E811A /* CFNetwork.framework */; };
 		00DDE5B616720E2C009E811A /* libObjectiveFlickr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */; };
 		00DDE5B916721EE9009E811A /* FPPhotosetTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */; };
+		00EC1124167B17AA0013B3EC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveFlickr.a; path = "../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos/libObjectiveFlickr.a"; sourceTree = "<group>"; };
 		00DDE5B716721EE9009E811A /* FPPhotosetTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPhotosetTableCell.h; sourceTree = "<group>"; };
 		00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPhotosetTableCell.m; sourceTree = "<group>"; };
+		00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EC1124167B17AA0013B3EC /* SystemConfiguration.framework in Frameworks */,
 				00DDE5B616720E2C009E811A /* libObjectiveFlickr.a in Frameworks */,
 				00DDE5B41671136D009E811A /* CFNetwork.framework in Frameworks */,
 				00DDE5B2167112E4009E811A /* libFlickrPicker.a in Frameworks */,
@@ -122,6 +125,7 @@
 		00DDE5661670F663009E811A = {
 			isa = PBXGroup;
 			children = (
+				00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */,
 				00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */,
 				00DDE5B31671136D009E811A /* CFNetwork.framework */,
 				00DDE5841671053F009E811A /* ObjectiveFlickr.xcodeproj */,
@@ -436,6 +440,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos\"",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -454,6 +459,7 @@
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos\"",
 				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

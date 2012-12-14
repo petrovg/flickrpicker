@@ -22,15 +22,18 @@
 
 -(void) viewDidLoad
 {
-    // If we are not authenticated, authenticate now
+    // If we are not authorized, authorize now
     OFFlickrAPIContext *context = [FlickrPicker sharedFlickrPicker].flickrContext;
     if (!context.OAuthToken.length)
     {
+        // Run this when authorized
         [[FlickrPicker sharedFlickrPicker] setBlockToRunWhenAuthorized:^{
             NSLog(@"OK, getting photosets and refresh the table view %@ now", self.tableView);
             [[FlickrPicker sharedFlickrPicker] getPhotosets:^(NSArray *photosets) {
+                // This will run when the photosets are here
                 self.collatedPhotosets = [self collatePhotosets:photosets];
                 NSLog(@"Collated photosets are %@", self.collatedPhotosets);
+                [self.tableView reloadData];
                 }];
             }];
         [[FlickrPicker sharedFlickrPicker] authorize];
