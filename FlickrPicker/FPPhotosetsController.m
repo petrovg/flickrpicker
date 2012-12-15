@@ -71,7 +71,7 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
     NSLog(@"Chosen photoset at index path: %@", indexPath);
     FPPhotosViewController *photosViewController = [[FPPhotosViewController alloc] init];
     photosViewController.photoset = [[self.collatedPhotosets objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [self presentViewController:photosViewController animated:YES completion:nil];
+    [self.navigationController  pushViewController:photosViewController animated:YES];
 }
 
 

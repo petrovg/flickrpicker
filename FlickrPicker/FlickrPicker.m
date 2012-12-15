@@ -8,6 +8,8 @@
 
 #import "FlickrPicker.h"
 #import <UIKit/UIKit.h>
+#import "FPFlickrImagePickerController.h"
+#import "FPPhotosetsController.h"
 
 NSString *kStoredAuthTokenKeyName = @"FlickrOAuthToken";
 NSString *kStoredAuthTokenSecretKeyName = @"FlickrOAuthTokenSecret";
@@ -30,6 +32,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 {
     OFFlickrAPIContext *flickrContext;
     OFFlickrAPIRequest *flickrRequest;
+    FPFlickrImagePickerController *flickrImagePickerController;
 }
 
 +(FlickrPicker*)sharedFlickrPicker
@@ -141,6 +144,16 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     flickrRequest.delegate = self;
 	
 	return flickrRequest;
+}
+
+- (FPFlickrImagePickerController *)flickrImagePickerController
+{
+	if (!flickrImagePickerController) {
+        FPPhotosetsController *photosetsViewController = [[FPPhotosetsController alloc] init];
+		flickrImagePickerController = [[FPFlickrImagePickerController alloc] initWithRootViewController:photosetsViewController];
+	}
+    
+	return flickrImagePickerController;
 }
 
 

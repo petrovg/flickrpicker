@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ObjectiveFlickr.h"
+#import "FPFlickrImagePickerController.h"
 
 @interface FlickrPicker : NSObject <OFFlickrAPIRequestDelegate>
 
@@ -15,6 +16,7 @@
 @property (nonatomic, strong, readonly) OFFlickrAPIRequest *flickrRequest;
 @property (nonatomic, strong, readonly) NSString *userId;
 @property (nonatomic, strong) void (^blockToRunWhenAuthorized)(void);
+@property (nonatomic, strong, readonly) FPFlickrImagePickerController *flickrImagePickerController;
 
 +(FlickrPicker*)sharedFlickrPicker;
 -(void) authorize;
