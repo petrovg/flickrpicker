@@ -6,20 +6,20 @@
 //  Copyright (c) 2012 George Petrov. All rights reserved.
 //
 
-#import "FPFlickrImagePickerController.h"
+#import "FPPhotosetsController.h"
 #import "FPPhotosetTableCell.h"
 #import "FlickrPicker.h"
 #import "NSDictionary+Photoset.h"
 #import "FPPhotosViewController.h"
 
-@interface FPFlickrImagePickerController ()
+@interface FPPhotosetsController ()
 
 // The photosets, collated by their first letter
 @property (strong, nonatomic) NSArray *collatedPhotosets;
 
 @end
 
-@implementation FPFlickrImagePickerController
+@implementation FPPhotosetsController
 
 -(void) viewDidLoad
 {

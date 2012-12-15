@@ -7,7 +7,7 @@
 //
 
 #import "PAFViewController.h"
-#import "FPFlickrImagePickerController.h"
+#import "FPPhotosetsController.h"
 
 @interface PAFViewController ()
 
@@ -28,7 +28,7 @@
 }
 
 - (IBAction)pickImage:(id)sender {
-    FPFlickrImagePickerController *picker = [[FPFlickrImagePickerController alloc] init];
+    FPPhotosetsController *picker = [[FPPhotosetsController alloc] init];
     [self presentViewController:picker animated:YES completion:nil];
 }
 

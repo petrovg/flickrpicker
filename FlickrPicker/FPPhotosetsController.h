@@ -17,7 +17,7 @@
 // recently added photos
 //
 
-@interface FPFlickrImagePickerController : UITableViewController <OFFlickrAPIRequestDelegate, UITableViewDelegate>
+@interface FPPhotosetsController : UITableViewController <OFFlickrAPIRequestDelegate, UITableViewDelegate>
 
 // The delegate that will be notified when the image picking is complete
 @property (weak, nonatomic) id <UITableViewDelegate> delegate;
