@@ -10,3 +10,10 @@ FlickrPicker is used the way you would use a UIImagePickerController. You presen
 
 * Add the FlickrPicker project to your project
 * Create a callback URL so that your app can be notified after user grants permissions
+
+
+# TO DO
+
+* Activity indicators
+* Store the authorization token and sectret
+* Add a de-authorize button to PickAPic which removed the stored token and secret

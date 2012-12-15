@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 George Petrov. All rights reserved.
 //
 
-#import "PAFAppDelegate.h"
+#import "PAPAppDelegate.h"
 #import "FlickrPicker.h"
 
-@implementation PAFAppDelegate
+@implementation PAPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

@@ -18,12 +18,12 @@
 		00DDE595167106EA009E811A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE594167106EA009E811A /* CoreGraphics.framework */; };
 		00DDE59B167106EA009E811A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE599167106EA009E811A /* InfoPlist.strings */; };
 		00DDE59D167106EA009E811A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE59C167106EA009E811A /* main.m */; };
-		00DDE5A1167106EA009E811A /* PAFAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5A0167106EA009E811A /* PAFAppDelegate.m */; };
+		00DDE5A1167106EA009E811A /* PAPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5A0167106EA009E811A /* PAPAppDelegate.m */; };
 		00DDE5A3167106EA009E811A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE5A2167106EA009E811A /* Default.png */; };
 		00DDE5A5167106EA009E811A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE5A4167106EA009E811A /* Default@2x.png */; };
 		00DDE5A7167106EA009E811A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE5A6167106EA009E811A /* Default-568h@2x.png */; };
 		00DDE5AA167106EA009E811A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE5A8167106EA009E811A /* MainStoryboard.storyboard */; };
-		00DDE5AD167106EA009E811A /* PAFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5AC167106EA009E811A /* PAFViewController.m */; };
+		00DDE5AD167106EA009E811A /* PAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5AC167106EA009E811A /* PAPViewController.m */; };
 		00DDE5B2167112E4009E811A /* libFlickrPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5711670F663009E811A /* libFlickrPicker.a */; };
 		00DDE5B41671136D009E811A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B31671136D009E811A /* CFNetwork.framework */; };
 		00DDE5B616720E2C009E811A /* libObjectiveFlickr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */; };
@@ -75,14 +75,14 @@
 		00DDE59A167106EA009E811A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		00DDE59C167106EA009E811A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		00DDE59E167106EA009E811A /* PickAFlick-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PickAFlick-Prefix.pch"; sourceTree = "<group>"; };
-		00DDE59F167106EA009E811A /* PAFAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAFAppDelegate.h; sourceTree = "<group>"; };
-		00DDE5A0167106EA009E811A /* PAFAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAFAppDelegate.m; sourceTree = "<group>"; };
+		00DDE59F167106EA009E811A /* PAPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAPAppDelegate.h; sourceTree = "<group>"; };
+		00DDE5A0167106EA009E811A /* PAPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAPAppDelegate.m; sourceTree = "<group>"; };
 		00DDE5A2167106EA009E811A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		00DDE5A4167106EA009E811A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		00DDE5A6167106EA009E811A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		00DDE5A9167106EA009E811A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		00DDE5AB167106EA009E811A /* PAFViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAFViewController.h; sourceTree = "<group>"; };
-		00DDE5AC167106EA009E811A /* PAFViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAFViewController.m; sourceTree = "<group>"; };
+		00DDE5AB167106EA009E811A /* PAPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAPViewController.h; sourceTree = "<group>"; };
+		00DDE5AC167106EA009E811A /* PAPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAPViewController.m; sourceTree = "<group>"; };
 		00DDE5B31671136D009E811A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveFlickr.a; path = "../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos/libObjectiveFlickr.a"; sourceTree = "<group>"; };
 		00DDE5B716721EE9009E811A /* FPPhotosetTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPhotosetTableCell.h; sourceTree = "<group>"; };
@@ -199,21 +199,22 @@
 		00DDE58B167106C7009E811A /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				00DDE596167106EA009E811A /* PickAFlick */,
+				00DDE596167106EA009E811A /* PickAPic */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
 		};
-		00DDE596167106EA009E811A /* PickAFlick */ = {
+		00DDE596167106EA009E811A /* PickAPic */ = {
 			isa = PBXGroup;
 			children = (
-				00DDE59F167106EA009E811A /* PAFAppDelegate.h */,
-				00DDE5A0167106EA009E811A /* PAFAppDelegate.m */,
+				00DDE59F167106EA009E811A /* PAPAppDelegate.h */,
+				00DDE5A0167106EA009E811A /* PAPAppDelegate.m */,
 				00DDE5A8167106EA009E811A /* MainStoryboard.storyboard */,
-				00DDE5AB167106EA009E811A /* PAFViewController.h */,
-				00DDE5AC167106EA009E811A /* PAFViewController.m */,
+				00DDE5AB167106EA009E811A /* PAPViewController.h */,
+				00DDE5AC167106EA009E811A /* PAPViewController.m */,
 				00DDE597167106EA009E811A /* Supporting Files */,
 			);
+			name = PickAPic;
 			path = PickAFlick;
 			sourceTree = "<group>";
 		};
@@ -251,9 +252,9 @@
 			productReference = 00DDE5711670F663009E811A /* libFlickrPicker.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		00DDE58F167106EA009E811A /* PickAFlick */ = {
+		00DDE58F167106EA009E811A /* PickAPic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00DDE5AE167106EA009E811A /* Build configuration list for PBXNativeTarget "PickAFlick" */;
+			buildConfigurationList = 00DDE5AE167106EA009E811A /* Build configuration list for PBXNativeTarget "PickAPic" */;
 			buildPhases = (
 				00DDE58C167106EA009E811A /* Sources */,
 				00DDE58D167106EA009E811A /* Frameworks */,
@@ -263,7 +264,7 @@
 			);
 			dependencies = (
 			);
-			name = PickAFlick;
+			name = PickAPic;
 			productName = PickAFlick;
 			productReference = 00DDE590167106EA009E811A /* PickAFlick.app */;
 			productType = "com.apple.product-type.application";
@@ -296,7 +297,7 @@
 			projectRoot = "";
 			targets = (
 				00DDE5701670F663009E811A /* FlickrPicker */,
-				00DDE58F167106EA009E811A /* PickAFlick */,
+				00DDE58F167106EA009E811A /* PickAPic */,
 			);
 		};
 /* End PBXProject section */
@@ -346,8 +347,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				00DDE59D167106EA009E811A /* main.m in Sources */,
-				00DDE5A1167106EA009E811A /* PAFAppDelegate.m in Sources */,
-				00DDE5AD167106EA009E811A /* PAFViewController.m in Sources */,
+				00DDE5A1167106EA009E811A /* PAPAppDelegate.m in Sources */,
+				00DDE5AD167106EA009E811A /* PAPViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +505,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		00DDE5AE167106EA009E811A /* Build configuration list for PBXNativeTarget "PickAFlick" */ = {
+		00DDE5AE167106EA009E811A /* Build configuration list for PBXNativeTarget "PickAPic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00DDE5AF167106EA009E811A /* Debug */,

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "PAFAppDelegate.h"
+#import "PAPAppDelegate.h"
 
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([PAFAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([PAPAppDelegate class]));
     }
 }

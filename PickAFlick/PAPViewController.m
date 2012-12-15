@@ -6,15 +6,15 @@
 //  Copyright (c) 2012 George Petrov. All rights reserved.
 //
 
-#import "PAFViewController.h"
+#import "PAPViewController.h"
 #import "FlickrPicker.h"
 
 
-@interface PAFViewController ()
+@interface PAPViewController ()
 
 @end
 
-@implementation PAFViewController
+@implementation PAPViewController
 
 - (void)viewDidLoad
 {

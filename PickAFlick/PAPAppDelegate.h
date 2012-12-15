@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PAFAppDelegate : UIResponder <UIApplicationDelegate>
+@interface PAPAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
