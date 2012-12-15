@@ -16,6 +16,7 @@
 
 // The photosets, collated by their first letter
 @property (strong, nonatomic) NSArray *collatedPhotosets;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -35,6 +36,7 @@
                 self.collatedPhotosets = collatePhotosets(photosets);
                 NSLog(@"Collated photosets are %@", self.collatedPhotosets);
                 [self.tableView reloadData];
+                [self.activityIndicator stopAnimating];
                 }];
             }];
         [[FlickrPicker sharedFlickrPicker] authorize];
@@ -46,6 +48,15 @@
     // Init the table view
     [self.tableView registerClass:[FPPhotosetTableCell class] forCellReuseIdentifier:@"PhotosetCell"];
     
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    self.activityIndicator.frame = self.view.bounds;
+    self.activityIndicator.hidesWhenStopped = YES;
+    [self.view addSubview:self.activityIndicator];
+    [self.activityIndicator startAnimating];
 }
 
 NSArray* collatePhotosets(NSArray* rawPhotosets)
