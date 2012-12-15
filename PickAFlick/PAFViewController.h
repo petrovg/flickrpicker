@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PAFViewController : UIViewController
+@interface PAFViewController : UIViewController <UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *pickButton;
 @property (weak, nonatomic) IBOutlet UIImageView *photoView;

@@ -10,5 +10,6 @@
 
 @interface FPFlickrImagePickerController : UINavigationController
 
+@property (nonatomic, weak) id<UINavigationControllerDelegate, UIImagePickerControllerDelegate> delegate;
 
 @end

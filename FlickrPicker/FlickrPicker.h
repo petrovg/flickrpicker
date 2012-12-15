@@ -22,5 +22,6 @@
 -(void) authorize;
 -(void) getPhotosets:(void (^)(NSArray*))completion;
 -(void) getPhotos:(NSString *)photosetId completion:(void (^)(NSArray *))completion;
+-(void) getPhoto:(NSString *)photoId completion:(void (^)(NSArray *))completion;
 
 @end

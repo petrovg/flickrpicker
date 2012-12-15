@@ -24,6 +24,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) void (^blockToRunAfterGettingPhotosets)(NSArray*);
 @property (nonatomic, strong) void (^blockToRunAfterGettingPhotos)(NSArray*);
+@property (nonatomic, strong) void (^blockToRunAfterGettingAPhoto)(NSArray*);
 
 @end
 
@@ -69,6 +70,15 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     self.flickrRequest.sessionInfo = kFPRequestSessionGettingPhotos;
     [self.flickrRequest setSessionInfo:kFPRequestSessionGettingPhotos];
     [[self flickrRequest] callAPIMethodWithGET:@"flickr.photosets.getPhotos" arguments:[NSDictionary dictionaryWithObjectsAndKeys:photosetId, @"photoset_id", nil]];
+}
+
+-(void)getPhoto:(NSString *)photoId completion:(void (^)(NSArray *))completion
+{
+    self.blockToRunAfterGettingAPhoto = completion;
+    // Initialise the context and request and ask for the photos
+    NSLog(@"Requesting photos");
+    self.flickrRequest.sessionInfo = kFPRequestSessionGettingPhotos;
+    [self.flickrRequest setSessionInfo:kFPRequestSessionGettingPhotos];
 }
 
 #pragma mark OFFlickrAPIRequestDelegate

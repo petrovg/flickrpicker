@@ -30,7 +30,28 @@
 
 - (IBAction)pickImage:(id)sender {
     FPFlickrImagePickerController *picker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerController];
+    [picker setDelegate:self];
     [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (IBAction)pickFromStandard:(id)sender {
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    [picker setDelegate:self];
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+#pragma mark UIImagePickerControlleDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSLog(@"Selected image info from %@ is %@", picker, info);
+    UIImage *selectedImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [self.photoView setImage:selectedImage];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
