@@ -19,5 +19,6 @@
 +(FlickrPicker*)sharedFlickrPicker;
 -(void) authorize;
 -(void) getPhotosets:(void (^)(NSArray*))completion;
+-(void) getPhotos:(NSString *)photosetId completion:(void (^)(NSArray *))completion;
 
 @end

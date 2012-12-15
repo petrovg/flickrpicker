@@ -12,6 +12,7 @@
 NSString *kStoredAuthTokenKeyName = @"FlickrOAuthToken";
 NSString *kStoredAuthTokenSecretKeyName = @"FlickrOAuthTokenSecret";
 NSString *kFPRequestSessionGettingPhotosets = @"kFPequestSessionGettingPhotosets";
+NSString *kFPRequestSessionGettingPhotos = @"kFPequestSessionGettingPhotos";
 NSString *kFPPhotoSetTypePhotoset = @"kFPPhotoSetTypePhotoset";
 NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 
@@ -20,6 +21,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) void (^blockToRunAfterGettingPhotosets)(NSArray*);
+@property (nonatomic, strong) void (^blockToRunAfterGettingPhotos)(NSArray*);
 
 @end
 
@@ -46,19 +48,24 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     [self.flickrRequest fetchOAuthRequestTokenWithCallbackURL:[NSURL URLWithString:@"flickrpicker://auth"]];
 }
 
-void requestPhotosets(OFFlickrAPIRequest *request)
-{
-    // Initialise the context and request and ask for the photoset list
-    NSLog(@"Requesting photosets");
-    request.sessionInfo = kFPRequestSessionGettingPhotosets;
-    [request setSessionInfo:kFPRequestSessionGettingPhotosets];
-    [request callAPIMethodWithGET:@"flickr.photosets.getList" arguments:nil];
-}
-
 -(void)getPhotosets:(void (^)(NSArray *))completion
 {
     self.blockToRunAfterGettingPhotosets = completion;
-    requestPhotosets(self.flickrRequest);
+    // Initialise the context and request and ask for the photoset list
+    NSLog(@"Requesting photosets");
+    self.flickrRequest.sessionInfo = kFPRequestSessionGettingPhotosets;
+    [self.flickrRequest setSessionInfo:kFPRequestSessionGettingPhotosets];
+    [self.flickrRequest callAPIMethodWithGET:@"flickr.photosets.getList" arguments:nil];
+}
+
+-(void)getPhotos:(NSString *)photosetId completion:(void (^)(NSArray *))completion
+{
+    self.blockToRunAfterGettingPhotos = completion;
+    // Initialise the context and request and ask for the photos
+    NSLog(@"Requesting photos");
+    self.flickrRequest.sessionInfo = kFPRequestSessionGettingPhotos;
+    [self.flickrRequest setSessionInfo:kFPRequestSessionGettingPhotos];
+    [[self flickrRequest] callAPIMethodWithGET:@"flickr.photosets.getPhotos" arguments:[NSDictionary dictionaryWithObjectsAndKeys:photosetId, @"photoset_id", nil]];
 }
 
 #pragma mark OFFlickrAPIRequestDelegate
@@ -89,6 +96,13 @@ void requestPhotosets(OFFlickrAPIRequest *request)
     {
         NSArray *photosets = [inResponseDictionary valueForKeyPath:@"photosets.photoset"];
         self.blockToRunAfterGettingPhotosets(photosets);
+        [self setBlockToRunWhenAuthorized:nil];
+        [self.flickrRequest setSessionInfo:nil];
+    }
+    else if (self.flickrRequest.sessionInfo == kFPRequestSessionGettingPhotos)
+    {
+        NSArray *photos = [inResponseDictionary valueForKeyPath:@"photoset.photo"];
+        self.blockToRunAfterGettingPhotos(photos);
         [self setBlockToRunWhenAuthorized:nil];
         [self.flickrRequest setSessionInfo:nil];
     }

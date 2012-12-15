@@ -10,6 +10,7 @@
 #import "FPPhotosetTableCell.h"
 #import "FlickrPicker.h"
 #import "NSDictionary+Photoset.h"
+#import "FPPhotosViewController.h"
 
 @interface FPFlickrImagePickerController ()
 
@@ -62,6 +63,18 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
     }
     return [NSArray arrayWithArray:sections];
 }
+
+#pragma mark UITableViewDelegate
+
+-(void) tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"Chosen photoset at index path: %@", indexPath);
+    FPPhotosViewController *photosViewController = [[FPPhotosViewController alloc] init];
+    photosViewController.photoset = [[self.collatedPhotosets objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    [self presentViewController:photosViewController animated:YES completion:nil];
+}
+
+
 
 
 #pragma mark UITableViewDataSource
