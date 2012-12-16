@@ -16,14 +16,6 @@
 		00DDE592167106EA009E811A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5821670F743009E811A /* UIKit.framework */; };
 		00DDE593167106EA009E811A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5741670F663009E811A /* Foundation.framework */; };
 		00DDE595167106EA009E811A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE594167106EA009E811A /* CoreGraphics.framework */; };
-		00DDE59B167106EA009E811A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE599167106EA009E811A /* InfoPlist.strings */; };
-		00DDE59D167106EA009E811A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE59C167106EA009E811A /* main.m */; };
-		00DDE5A1167106EA009E811A /* PAPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5A0167106EA009E811A /* PAPAppDelegate.m */; };
-		00DDE5A3167106EA009E811A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE5A2167106EA009E811A /* Default.png */; };
-		00DDE5A5167106EA009E811A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE5A4167106EA009E811A /* Default@2x.png */; };
-		00DDE5A7167106EA009E811A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE5A6167106EA009E811A /* Default-568h@2x.png */; };
-		00DDE5AA167106EA009E811A /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00DDE5A8167106EA009E811A /* MainStoryboard.storyboard */; };
-		00DDE5AD167106EA009E811A /* PAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5AC167106EA009E811A /* PAPViewController.m */; };
 		00DDE5B2167112E4009E811A /* libFlickrPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5711670F663009E811A /* libFlickrPicker.a */; };
 		00DDE5B41671136D009E811A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B31671136D009E811A /* CFNetwork.framework */; };
 		00DDE5B616720E2C009E811A /* libObjectiveFlickr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */; };
@@ -34,6 +26,14 @@
 		00EC1139167D2C3F0013B3EC /* FPPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1135167D2C030013B3EC /* FPPhotosViewController.m */; };
 		00EC113A167D2C3F0013B3EC /* FPPhotoViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1136167D2C040013B3EC /* FPPhotoViewCell.h */; };
 		00EC113B167D2C3F0013B3EC /* FPPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1137167D2C040013B3EC /* FPPhotoViewCell.m */; };
+		00EC114B167DE4A10013B3EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EC113D167DE4A10013B3EC /* Default-568h@2x.png */; };
+		00EC114C167DE4A10013B3EC /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EC113E167DE4A10013B3EC /* Default.png */; };
+		00EC114D167DE4A10013B3EC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 00EC113F167DE4A10013B3EC /* Default@2x.png */; };
+		00EC114E167DE4A10013B3EC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00EC1140167DE4A10013B3EC /* InfoPlist.strings */; };
+		00EC114F167DE4A10013B3EC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00EC1142167DE4A10013B3EC /* MainStoryboard.storyboard */; };
+		00EC1150167DE4A10013B3EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1144167DE4A10013B3EC /* main.m */; };
+		00EC1151167DE4A10013B3EC /* PAPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1146167DE4A10013B3EC /* PAPAppDelegate.m */; };
+		00EC1152167DE4A10013B3EC /* PAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1148167DE4A10013B3EC /* PAPViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,20 +71,8 @@
 		00DDE57B1670F663009E811A /* FPPhotosetsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPPhotosetsController.m; sourceTree = "<group>"; };
 		00DDE5821670F743009E811A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		00DDE5841671053F009E811A /* ObjectiveFlickr.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ObjectiveFlickr.xcodeproj; path = ../objectiveflickr/ObjectiveFlickr.xcodeproj; sourceTree = "<group>"; };
-		00DDE590167106EA009E811A /* PickAFlick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickAFlick.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		00DDE590167106EA009E811A /* PickAPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PickAPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00DDE594167106EA009E811A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		00DDE598167106EA009E811A /* PickAFlick-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PickAFlick-Info.plist"; sourceTree = "<group>"; };
-		00DDE59A167106EA009E811A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		00DDE59C167106EA009E811A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		00DDE59E167106EA009E811A /* PickAFlick-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PickAFlick-Prefix.pch"; sourceTree = "<group>"; };
-		00DDE59F167106EA009E811A /* PAPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAPAppDelegate.h; sourceTree = "<group>"; };
-		00DDE5A0167106EA009E811A /* PAPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAPAppDelegate.m; sourceTree = "<group>"; };
-		00DDE5A2167106EA009E811A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		00DDE5A4167106EA009E811A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		00DDE5A6167106EA009E811A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		00DDE5A9167106EA009E811A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		00DDE5AB167106EA009E811A /* PAPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAPViewController.h; sourceTree = "<group>"; };
-		00DDE5AC167106EA009E811A /* PAPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAPViewController.m; sourceTree = "<group>"; };
 		00DDE5B31671136D009E811A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveFlickr.a; path = "../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos/libObjectiveFlickr.a"; sourceTree = "<group>"; };
 		00DDE5B716721EE9009E811A /* FPPhotosetTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPhotosetTableCell.h; sourceTree = "<group>"; };
@@ -96,6 +84,18 @@
 		00EC1135167D2C030013B3EC /* FPPhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPPhotosViewController.m; sourceTree = "<group>"; };
 		00EC1136167D2C040013B3EC /* FPPhotoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPPhotoViewCell.h; sourceTree = "<group>"; };
 		00EC1137167D2C040013B3EC /* FPPhotoViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPPhotoViewCell.m; sourceTree = "<group>"; };
+		00EC113D167DE4A10013B3EC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		00EC113E167DE4A10013B3EC /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		00EC113F167DE4A10013B3EC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		00EC1141167DE4A10013B3EC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		00EC1143167DE4A10013B3EC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		00EC1144167DE4A10013B3EC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		00EC1145167DE4A10013B3EC /* PAPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPAppDelegate.h; sourceTree = "<group>"; };
+		00EC1146167DE4A10013B3EC /* PAPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPAppDelegate.m; sourceTree = "<group>"; };
+		00EC1147167DE4A10013B3EC /* PAPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPViewController.h; sourceTree = "<group>"; };
+		00EC1148167DE4A10013B3EC /* PAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPViewController.m; sourceTree = "<group>"; };
+		00EC1154167DE5340013B3EC /* PickAPic-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PickAPic-Info.plist"; sourceTree = "<group>"; };
+		00EC1155167DE5340013B3EC /* PickAPic-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PickAPic-Prefix.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				00DDE5711670F663009E811A /* libFlickrPicker.a */,
-				00DDE590167106EA009E811A /* PickAFlick.app */,
+				00DDE590167106EA009E811A /* PickAPic.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,37 +201,29 @@
 		00DDE58B167106C7009E811A /* Examples */ = {
 			isa = PBXGroup;
 			children = (
-				00DDE596167106EA009E811A /* PickAPic */,
+				00EC113C167DE4A10013B3EC /* PickAPic */,
 			);
 			name = Examples;
 			sourceTree = "<group>";
 		};
-		00DDE596167106EA009E811A /* PickAPic */ = {
+		00EC113C167DE4A10013B3EC /* PickAPic */ = {
 			isa = PBXGroup;
 			children = (
-				00DDE59F167106EA009E811A /* PAPAppDelegate.h */,
-				00DDE5A0167106EA009E811A /* PAPAppDelegate.m */,
-				00DDE5A8167106EA009E811A /* MainStoryboard.storyboard */,
-				00DDE5AB167106EA009E811A /* PAPViewController.h */,
-				00DDE5AC167106EA009E811A /* PAPViewController.m */,
-				00DDE597167106EA009E811A /* Supporting Files */,
+				00EC1154167DE5340013B3EC /* PickAPic-Info.plist */,
+				00EC1155167DE5340013B3EC /* PickAPic-Prefix.pch */,
+				00EC113D167DE4A10013B3EC /* Default-568h@2x.png */,
+				00EC113E167DE4A10013B3EC /* Default.png */,
+				00EC113F167DE4A10013B3EC /* Default@2x.png */,
+				00EC1140167DE4A10013B3EC /* InfoPlist.strings */,
+				00EC1142167DE4A10013B3EC /* MainStoryboard.storyboard */,
+				00EC1144167DE4A10013B3EC /* main.m */,
+				00EC1145167DE4A10013B3EC /* PAPAppDelegate.h */,
+				00EC1146167DE4A10013B3EC /* PAPAppDelegate.m */,
+				00EC1147167DE4A10013B3EC /* PAPViewController.h */,
+				00EC1148167DE4A10013B3EC /* PAPViewController.m */,
 			);
 			name = PickAPic;
-			path = PickAFlick;
-			sourceTree = "<group>";
-		};
-		00DDE597167106EA009E811A /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				00DDE598167106EA009E811A /* PickAFlick-Info.plist */,
-				00DDE599167106EA009E811A /* InfoPlist.strings */,
-				00DDE59C167106EA009E811A /* main.m */,
-				00DDE59E167106EA009E811A /* PickAFlick-Prefix.pch */,
-				00DDE5A2167106EA009E811A /* Default.png */,
-				00DDE5A4167106EA009E811A /* Default@2x.png */,
-				00DDE5A6167106EA009E811A /* Default-568h@2x.png */,
-			);
-			name = "Supporting Files";
+			path = Examples/PickAPic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +260,7 @@
 			);
 			name = PickAPic;
 			productName = PickAFlick;
-			productReference = 00DDE590167106EA009E811A /* PickAFlick.app */;
+			productReference = 00DDE590167106EA009E811A /* PickAPic.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -319,11 +311,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00DDE59B167106EA009E811A /* InfoPlist.strings in Resources */,
-				00DDE5A3167106EA009E811A /* Default.png in Resources */,
-				00DDE5A5167106EA009E811A /* Default@2x.png in Resources */,
-				00DDE5A7167106EA009E811A /* Default-568h@2x.png in Resources */,
-				00DDE5AA167106EA009E811A /* MainStoryboard.storyboard in Resources */,
+				00EC114B167DE4A10013B3EC /* Default-568h@2x.png in Resources */,
+				00EC114C167DE4A10013B3EC /* Default.png in Resources */,
+				00EC114D167DE4A10013B3EC /* Default@2x.png in Resources */,
+				00EC114E167DE4A10013B3EC /* InfoPlist.strings in Resources */,
+				00EC114F167DE4A10013B3EC /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,27 +342,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00DDE59D167106EA009E811A /* main.m in Sources */,
-				00DDE5A1167106EA009E811A /* PAPAppDelegate.m in Sources */,
-				00DDE5AD167106EA009E811A /* PAPViewController.m in Sources */,
+				00EC1150167DE4A10013B3EC /* main.m in Sources */,
+				00EC1151167DE4A10013B3EC /* PAPAppDelegate.m in Sources */,
+				00EC1152167DE4A10013B3EC /* PAPViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		00DDE599167106EA009E811A /* InfoPlist.strings */ = {
+		00EC1140167DE4A10013B3EC /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				00DDE59A167106EA009E811A /* en */,
+				00EC1141167DE4A10013B3EC /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		00DDE5A8167106EA009E811A /* MainStoryboard.storyboard */ = {
+		00EC1142167DE4A10013B3EC /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				00DDE5A9167106EA009E811A /* en */,
+				00EC1143167DE4A10013B3EC /* en */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -456,9 +448,9 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PickAFlick/PickAFlick-Prefix.pch";
+				GCC_PREFIX_HEADER = "Examples/PickAPic/PickAPic-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../objectiveflickr/**";
-				INFOPLIST_FILE = "PickAFlick/PickAFlick-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/PickAPic/PickAPic-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos\"",
@@ -474,9 +466,9 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "PickAFlick/PickAFlick-Prefix.pch";
+				GCC_PREFIX_HEADER = "Examples/PickAPic/PickAPic-Prefix.pch";
 				HEADER_SEARCH_PATHS = "../objectiveflickr/**";
-				INFOPLIST_FILE = "PickAFlick/PickAFlick-Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Examples/PickAPic/PickAPic-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos\"",
