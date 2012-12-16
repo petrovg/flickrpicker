@@ -48,10 +48,7 @@
     // Init the table view
     [self.tableView registerClass:[FPPhotosetTableCell class] forCellReuseIdentifier:@"PhotosetCell"];
     
-}
-
--(void)viewDidAppear:(BOOL)animated
-{
+    // Show activity indicator
     self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     self.activityIndicator.frame = self.view.bounds;
     self.activityIndicator.hidesWhenStopped = YES;
