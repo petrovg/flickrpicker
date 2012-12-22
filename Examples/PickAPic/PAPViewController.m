@@ -40,6 +40,11 @@
     [self presentViewController:picker animated:YES completion:nil];
 }
 
+// Clears the stored authorization data
+- (IBAction)deauthorize:(id)sender {
+    [[FlickrPicker sharedFlickrPicker] clearAuthData];
+}
+
 #pragma mark UIImagePickerControlleDelegate
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {

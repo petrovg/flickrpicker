@@ -15,7 +15,5 @@ FlickrPicker is used the way you would use a UIImagePickerController. You presen
 
 # TO DO
 
-* Activity indicators
-* Store the authorization token and sectret
-* Add a de-authorize button to PickAPic which removed the stored token and secret
+* Replace activity indicators with a single one
 * A button to cancel the image picking

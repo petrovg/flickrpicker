@@ -14,7 +14,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6mE-Pz-gcj">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="52" id="SsG-3x-sh0"/>
+                                    <constraint firstAttribute="width" constant="80" id="lQS-cG-HKi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Pick">
@@ -34,6 +34,9 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CiS-gu-aUW">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="3YB-Tf-t4V"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Local">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,16 +49,33 @@
                                     <action selector="pickFromStandard:" destination="2" eventType="touchUpInside" id="DNb-7M-wOO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtG-wg-BkS">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="De-auth">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deauthorize:" destination="2" eventType="touchUpInside" id="ite-2M-pFb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CiS-gu-aUW" firstAttribute="baseline" secondItem="6mE-Pz-gcj" secondAttribute="baseline" type="default" id="3EC-kS-02G"/>
+                            <constraint firstItem="CiS-gu-aUW" firstAttribute="baseline" secondItem="6mE-Pz-gcj" secondAttribute="baseline" type="user" id="9I9-5Z-adD"/>
+                            <constraint firstAttribute="trailing" secondItem="CiS-gu-aUW" secondAttribute="trailing" constant="21" id="Fiz-Z8-Dcf"/>
+                            <constraint firstItem="CiS-gu-aUW" firstAttribute="baseline" secondItem="mtG-wg-BkS" secondAttribute="baseline" type="user" id="HhA-A9-QY4"/>
+                            <constraint firstItem="mtG-wg-BkS" firstAttribute="centerX" secondItem="uGn-e5-unn" secondAttribute="centerX" type="default" id="NO7-pw-4vl"/>
                             <constraint firstItem="6mE-Pz-gcj" firstAttribute="top" secondItem="3" secondAttribute="top" constant="50" id="Pv6-hw-kSR"/>
                             <constraint firstItem="uGn-e5-unn" firstAttribute="top" secondItem="3" secondAttribute="top" constant="178" id="Y1E-vh-Sm2"/>
                             <constraint firstItem="6mE-Pz-gcj" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="YFs-xR-YBZ"/>
+                            <constraint firstItem="mtG-wg-BkS" firstAttribute="top" secondItem="3" secondAttribute="top" constant="49" id="hk3-HG-eN0"/>
+                            <constraint firstItem="CiS-gu-aUW" firstAttribute="top" secondItem="6mE-Pz-gcj" secondAttribute="top" type="default" id="kY8-lA-UN7"/>
                             <constraint firstItem="uGn-e5-unn" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="qwJ-dP-V7O"/>
                             <constraint firstAttribute="trailing" secondItem="uGn-e5-unn" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ttA-9b-bWN"/>
-                            <constraint firstAttribute="trailing" secondItem="CiS-gu-aUW" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uTv-ZT-pzh"/>
                         </constraints>
                     </view>
                     <connections>
@@ -74,6 +94,8 @@
         <class className="PAPViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PAPViewController.h"/>
             <relationships>
+                <relationship kind="action" name="pickFromStandard:"/>
+                <relationship kind="action" name="pickImage:"/>
                 <relationship kind="outlet" name="photoView" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="pickButton" candidateClass="UIButton"/>
             </relationships>
