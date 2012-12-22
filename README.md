@@ -20,3 +20,5 @@ FlickrPicker is used the way you would use a UIImagePickerController. You presen
 # TO DO
 
 * Replace activity indicators with a single one
+* Cache should survive dismissal to some extent
+* When removing it must pop to the root controller, but without the doggy flickering views

@@ -45,6 +45,11 @@
 
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"View will appear. Cache is %@", self.thumbnailCache);
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -64,6 +69,7 @@
                                selectedImage, UIImagePickerControllerOriginalImage,
                                selectedPhotoURL, UIImagePickerControllerReferenceURL ,nil];
     [pickerDelegate imagePickerController:imagePicker didFinishPickingMediaWithInfo:imageInfo];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 #pragma mark - UITableViewDataSource
