@@ -209,7 +209,6 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 -(void)cancel
 {
     id<UIImagePickerControllerDelegate> delegate = self.flickrImagePickerController.delegate;
-    [self.flickrImagePickerController popToRootViewControllerAnimated:NO];
     [delegate imagePickerControllerDidCancel:self.flickrImagePickerController];
 }
 

@@ -69,7 +69,6 @@
                                selectedImage, UIImagePickerControllerOriginalImage,
                                selectedPhotoURL, UIImagePickerControllerReferenceURL ,nil];
     [pickerDelegate imagePickerController:imagePicker didFinishPickingMediaWithInfo:imageInfo];
-    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 #pragma mark - UITableViewDataSource
