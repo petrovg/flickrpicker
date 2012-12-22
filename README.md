@@ -1,6 +1,6 @@
 # FlickrPicker
 
-FlickrPicker is a UIImagePickerController-like class that allow you to pic images from Flickr.
+FlickrPicker is a UIImagePickerController-like class that allow you to select images from Flickr.
 
 ## Description
 
