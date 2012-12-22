@@ -10,6 +10,7 @@ FlickrPicker is used the way you would use a UIImagePickerController. You presen
 
 * Add the FlickrPicker project to your project
 * Create a callback URL so that your app can be notified after user grants permissions
+* Add Security.framework to Link binary with libraries in the Build phases
 
 
 # TO DO

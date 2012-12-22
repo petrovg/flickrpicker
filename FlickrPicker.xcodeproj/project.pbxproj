@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0030BF491685D4AE003817A0 /* SimpleKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030BF481685D4AE003817A0 /* SimpleKeychain.m */; };
 		003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F61677DE6A00156B29 /* FlickrPicker.m */; };
 		003810FA16791E6000156B29 /* NSDictionary+Photoset.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F916791E6000156B29 /* NSDictionary+Photoset.m */; };
 		00DDE5751670F663009E811A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5741670F663009E811A /* Foundation.framework */; };
@@ -34,6 +35,8 @@
 		00EC1150167DE4A10013B3EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1144167DE4A10013B3EC /* main.m */; };
 		00EC1151167DE4A10013B3EC /* PAPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1146167DE4A10013B3EC /* PAPAppDelegate.m */; };
 		00EC1152167DE4A10013B3EC /* PAPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1148167DE4A10013B3EC /* PAPViewController.m */; };
+		00EC11601682410B0013B3EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC115F1682410A0013B3EC /* Security.framework */; };
+		00EC11611682419A0013B3EC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC115F1682410A0013B3EC /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0030BF471685D4AE003817A0 /* SimpleKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKeychain.h; sourceTree = "<group>"; };
+		0030BF481685D4AE003817A0 /* SimpleKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKeychain.m; sourceTree = "<group>"; };
 		003810F51677DE6A00156B29 /* FlickrPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPicker.h; sourceTree = "<group>"; };
 		003810F61677DE6A00156B29 /* FlickrPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPicker.m; sourceTree = "<group>"; };
 		003810F816791E6000156B29 /* NSDictionary+Photoset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Photoset.h"; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 		00EC1148167DE4A10013B3EC /* PAPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPViewController.m; sourceTree = "<group>"; };
 		00EC1154167DE5340013B3EC /* PickAPic-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PickAPic-Info.plist"; sourceTree = "<group>"; };
 		00EC1155167DE5340013B3EC /* PickAPic-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PickAPic-Prefix.pch"; sourceTree = "<group>"; };
+		00EC115F1682410A0013B3EC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EC11601682410B0013B3EC /* Security.framework in Frameworks */,
 				00DDE5831670F743009E811A /* UIKit.framework in Frameworks */,
 				00DDE5751670F663009E811A /* Foundation.framework in Frameworks */,
 			);
@@ -112,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EC11611682419A0013B3EC /* Security.framework in Frameworks */,
 				00EC1124167B17AA0013B3EC /* SystemConfiguration.framework in Frameworks */,
 				00DDE5B616720E2C009E811A /* libObjectiveFlickr.a in Frameworks */,
 				00DDE5B41671136D009E811A /* CFNetwork.framework in Frameworks */,
@@ -136,6 +144,7 @@
 		00DDE5661670F663009E811A = {
 			isa = PBXGroup;
 			children = (
+				00EC115F1682410A0013B3EC /* Security.framework */,
 				00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */,
 				00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */,
 				00DDE5B31671136D009E811A /* CFNetwork.framework */,
@@ -184,6 +193,8 @@
 				003810F916791E6000156B29 /* NSDictionary+Photoset.m */,
 				00EC112E167CA20E0013B3EC /* FPFlickrImagePickerController.h */,
 				00EC112F167CA20E0013B3EC /* FPFlickrImagePickerController.m */,
+				0030BF471685D4AE003817A0 /* SimpleKeychain.h */,
+				0030BF481685D4AE003817A0 /* SimpleKeychain.m */,
 			);
 			name = Source;
 			path = FlickrPicker;
@@ -335,6 +346,7 @@
 				003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */,
 				003810FA16791E6000156B29 /* NSDictionary+Photoset.m in Sources */,
 				00EC1130167CA20E0013B3EC /* FPFlickrImagePickerController.m in Sources */,
+				0030BF491685D4AE003817A0 /* SimpleKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +432,7 @@
 		00DDE5801670F663009E811A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				DSTROOT = /tmp/FlickrPicker.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlickrPicker/FlickrPicker-Prefix.pch";
@@ -433,6 +446,7 @@
 		00DDE5811670F663009E811A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				DSTROOT = /tmp/FlickrPicker.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FlickrPicker/FlickrPicker-Prefix.pch";
@@ -446,6 +460,7 @@
 		00DDE5AF167106EA009E811A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Examples/PickAPic/PickAPic-Prefix.pch";
@@ -464,6 +479,7 @@
 		00DDE5B0167106EA009E811A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Examples/PickAPic/PickAPic-Prefix.pch";

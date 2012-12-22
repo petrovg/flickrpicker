@@ -24,6 +24,9 @@
 
 -(void) viewDidLoad
 {
+    // Try get the auth token
+    //[[FlickrPicker sharedFlickrPicker] retrieveSavedAuthTokenAndSecret];
+    
     // If we are not authorized, authorize now
     OFFlickrAPIContext *context = [FlickrPicker sharedFlickrPicker].flickrContext;
     if (!context.OAuthToken.length)
