@@ -32,11 +32,6 @@
 {
     [super viewDidLoad];
     self.thumbnailCache = [NSMutableDictionary dictionaryWithCapacity:self.photos.count];
-    [[FlickrPicker sharedFlickrPicker] getPhotos:[self.photoset valueForKey:@"id"] completion:^(NSArray *photos){
-        NSLog(@"Got %d photos", photos.count);
-        self.photos = photos;
-        [self.tableView reloadData];
-    }];
     [self.tableView registerClass:[FPPhotoViewCell class] forCellReuseIdentifier:@"PhotoCell"];
     
     // Add a cancel button
@@ -47,7 +42,19 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"View will appear. Cache is %@", self.thumbnailCache);
+    NSLog(@"View will appear. There are %d cache entries", self.thumbnailCache.count);
+    [[FlickrPicker sharedFlickrPicker] getPhotos:[self.photoset valueForKey:@"id"] completion:^(NSArray *photos){
+        NSLog(@"Got %d photos", photos.count);
+        self.photos = photos;
+        [self.tableView reloadData];
+    }];
+
+}
+
+-(void) viewDidDisappear:(BOOL)animated
+{
+    self.photos = nil;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,7 +110,6 @@ void setUpPhoto(NSDictionary *photo, UIImageView *photoHolder, NSMutableDictiona
     }
     
     else {
-        NSLog(@"<== No cached image for url %@. Downloading...", photoURL);
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
             UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
             activityIndicator.frame = photoHolder.bounds;

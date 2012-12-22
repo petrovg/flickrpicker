@@ -13,10 +13,14 @@
 #import "FPPhotosViewController.h"
 
 @interface FPPhotosetsController ()
+{
+    FPPhotosViewController *photosViewController;
+}
 
 // The photosets, collated by their first letter
 @property (strong, nonatomic) NSArray *collatedPhotosets;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic, readonly) FPPhotosViewController *photosViewController;
 
 @end
 
@@ -83,9 +87,9 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
 -(void) tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Chosen photoset at index path: %@", indexPath);
-    FPPhotosViewController *photosViewController = [[FPPhotosViewController alloc] init];
+    FPPhotosViewController *photosViewController = self.photosViewController;
     photosViewController.photoset = [[self.collatedPhotosets objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [self.navigationController  pushViewController:photosViewController animated:YES];
+    [self.navigationController pushViewController:photosViewController animated:YES];
 }
 
 
@@ -120,6 +124,16 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
 {
     NSInteger section = [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
     return section;
+}
+
+#pragma mark The FPPhotosViewController
+// This is the FPPhotosViewController that shows the photos once a photoset is chosen
+-(FPPhotosViewController *) photosViewController
+{
+    if (!photosViewController)
+        photosViewController = [[FPPhotosViewController alloc] init];
+    
+    return photosViewController;
 }
 
 
