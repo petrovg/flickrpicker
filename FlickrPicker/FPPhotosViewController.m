@@ -38,6 +38,9 @@
     UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:[FlickrPicker sharedFlickrPicker] action:@selector(cancel)];
     [[self navigationItem] setRightBarButtonItem:cancelButtonItem];
 
+    // Hide the separator
+    [self.tableView setSeparatorColor:self.tableView.backgroundColor];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -87,7 +90,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80.0;
+    return 79.0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -111,15 +114,15 @@ void setUpPhoto(NSDictionary *photo, UIImageView *photoHolder, NSMutableDictiona
     
     else {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
-            UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            activityIndicator.frame = photoHolder.bounds;
-            activityIndicator.hidesWhenStopped = YES;
-            [photoHolder addSubview:activityIndicator];
-            [activityIndicator startAnimating];
+            //UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            //activityIndicator.frame = photoHolder.bounds;
+            //activityIndicator.hidesWhenStopped = YES;
+            //[photoHolder addSubview:activityIndicator];
+            //[activityIndicator startAnimating];
             UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
             [photoHolder setImage:image];
-            [activityIndicator stopAnimating];
-            [activityIndicator removeFromSuperview];
+            //[activityIndicator stopAnimating];
+            //[activityIndicator removeFromSuperview];
             [cache setObject:image forKey:photoURL];
         });
     }

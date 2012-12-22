@@ -21,13 +21,19 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        CGFloat photoWidth = self.frame.size.width / 4;
-        NSMutableArray *btns = [NSMutableArray arrayWithCapacity:4];
-        NSMutableArray *imgs = [NSMutableArray arrayWithCapacity:4];
+        static CGFloat m = 4.0; // margin
+        static CGFloat n = 4;   // number of pics per cell
+        CGFloat W = self.frame.size.width; // total frame width
+        CGFloat w =  (W - (n + 1) * m) / n; // image width
+        
+        NSMutableArray *btns = [NSMutableArray arrayWithCapacity:n];
+        NSMutableArray *imgs = [NSMutableArray arrayWithCapacity:n];
         for (int i = 0; i < 4; i++)
         {
-            CGRect frame = CGRectMake(i * photoWidth, 0, photoWidth, photoWidth);
+            CGFloat x = (i + 1) * m + i * w;
+            CGRect frame = CGRectMake(x, m , w, w);
             UIImageView *image = [[UIImageView alloc] initWithFrame:frame];
+            [image setBackgroundColor:[UIColor lightGrayColor]];
             [imgs setObject:image atIndexedSubscript:i];
             [self addSubview:image];
             FPImageSelectionButton *button = [[FPImageSelectionButton alloc] initWithFrame:frame];
