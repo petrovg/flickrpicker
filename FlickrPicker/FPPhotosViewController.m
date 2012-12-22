@@ -38,6 +38,11 @@
         [self.tableView reloadData];
     }];
     [self.tableView registerClass:[FPPhotoViewCell class] forCellReuseIdentifier:@"PhotoCell"];
+    
+    // Add a cancel button
+    UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:[FlickrPicker sharedFlickrPicker] action:@selector(cancel)];
+    [[self navigationItem] setRightBarButtonItem:cancelButtonItem];
+
 }
 
 - (void)didReceiveMemoryWarning

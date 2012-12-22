@@ -50,6 +50,18 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     return flickrPicker;
 }
 
+#pragma mark Getting an image picker controller
+- (FPFlickrImagePickerController *)flickrImagePickerController
+{
+	if (!flickrImagePickerController) {
+        FPPhotosetsController *photosetsViewController = [[FPPhotosetsController alloc] init];
+		flickrImagePickerController = [[FPFlickrImagePickerController alloc] initWithRootViewController:photosetsViewController];
+	}
+    
+	return flickrImagePickerController;
+}
+
+#pragma mark Authorization
 -(void)authorize
 {
     NSDictionary *storedAuthData = [SimpleKeychain load:kFPSecAttrServiceFlickr];
@@ -76,6 +88,13 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     NSLog(@"Authorization data deleted");
 }
 
+-(BOOL)isAuthorized
+{
+    return self.flickrContext.OAuthToken.length ? YES : NO;
+}
+
+
+#pragma mark Getting stuff from Flickr
 -(void)getPhotosets:(void (^)(NSArray *))completion
 {
     self.blockToRunAfterGettingPhotosets = completion;
@@ -185,15 +204,12 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 	return flickrRequest;
 }
 
-- (FPFlickrImagePickerController *)flickrImagePickerController
-{
-	if (!flickrImagePickerController) {
-        FPPhotosetsController *photosetsViewController = [[FPPhotosetsController alloc] init];
-		flickrImagePickerController = [[FPFlickrImagePickerController alloc] initWithRootViewController:photosetsViewController];
-	}
-    
-	return flickrImagePickerController;
-}
 
+#pragma mark Cancel selection
+-(void)cancel
+{
+    id<UIImagePickerControllerDelegate> delegate = self.flickrImagePickerController.delegate;
+    [delegate imagePickerControllerDidCancel:self.flickrImagePickerController];
+}
 
 @end

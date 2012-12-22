@@ -28,8 +28,7 @@
     //[[FlickrPicker sharedFlickrPicker] retrieveSavedAuthTokenAndSecret];
     
     // If we are not authorized, authorize now
-    OFFlickrAPIContext *context = [FlickrPicker sharedFlickrPicker].flickrContext;
-    if (!context.OAuthToken.length)
+    if (![[FlickrPicker sharedFlickrPicker] isAuthorized])
     {
         // Run this when authorized
         [[FlickrPicker sharedFlickrPicker] setBlockToRunWhenAuthorized:^{
@@ -57,6 +56,10 @@
     self.activityIndicator.hidesWhenStopped = YES;
     [self.view addSubview:self.activityIndicator];
     [self.activityIndicator startAnimating];
+    
+    // Add a cancel button
+    UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:[FlickrPicker sharedFlickrPicker] action:@selector(cancel)];
+    [[self navigationItem] setRightBarButtonItem:cancelButtonItem];
 }
 
 NSArray* collatePhotosets(NSArray* rawPhotosets)

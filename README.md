@@ -1,10 +1,14 @@
 # FlickrPicker
 
-FlickrPicker is an implementation of UIImagePickerController that allow you to pic images from Flickr.
+FlickrPicker is a UIImagePickerController-like class that allow you to pic images from Flickr.
 
 ## Description
 
-FlickrPicker is used the way you would use a UIImagePickerController. You present it modally and when it finishes it calls the
+FlickrPicker is used the way you would use a UIImagePickerController. You present it modally and when it finishes it calls the approopriate method of:
+
+    - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info;
+    - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
+
 
 # Getting started
 
@@ -16,4 +20,3 @@ FlickrPicker is used the way you would use a UIImagePickerController. You presen
 # TO DO
 
 * Replace activity indicators with a single one
-* A button to cancel the image picking
