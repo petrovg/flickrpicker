@@ -64,6 +64,9 @@
     // Add a cancel button
     UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:[FlickrPicker sharedFlickrPicker] action:@selector(cancel)];
     [[self navigationItem] setRightBarButtonItem:cancelButtonItem];
+    
+    // Fill up the screen the way the native image picker does
+    [self setWantsFullScreenLayout:YES];
 }
 
 NSArray* collatePhotosets(NSArray* rawPhotosets)

@@ -26,11 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [self popToRootViewControllerAnimated:NO];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
 }
 
 - (void)didReceiveMemoryWarning

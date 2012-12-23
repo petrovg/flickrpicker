@@ -41,6 +41,9 @@
     // Hide the separator
     [self.tableView setSeparatorColor:self.tableView.backgroundColor];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    // Take up the whole screen
+    [self setWantsFullScreenLayout:YES];
 }
 
 -(void)viewWillAppear:(BOOL)animated
