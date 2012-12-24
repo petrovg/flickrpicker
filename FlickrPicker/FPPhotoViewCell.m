@@ -33,7 +33,6 @@
             CGFloat x = (i + 1) * m + i * w;
             CGRect frame = CGRectMake(x, m , w, w);
             UIImageView *image = [[UIImageView alloc] initWithFrame:frame];
-            [image setBackgroundColor:[UIColor lightGrayColor]];
             [imgs setObject:image atIndexedSubscript:i];
             [self addSubview:image];
             FPImageSelectionButton *button = [[FPImageSelectionButton alloc] initWithFrame:frame];
