@@ -26,9 +26,10 @@
         CGFloat W = self.frame.size.width; // total frame width
         CGFloat w =  (W - (n + 1) * m) / n; // image width
         
+        // Lay out the images
         NSMutableArray *btns = [NSMutableArray arrayWithCapacity:n];
         NSMutableArray *imgs = [NSMutableArray arrayWithCapacity:n];
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < n; i++)
         {
             CGFloat x = (i + 1) * m + i * w;
             CGRect frame = CGRectMake(x, m , w, w);

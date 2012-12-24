@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+// An inamge selection button with a reference to a flickr
+// photo dataset so that when it sends a message to it's
+// handler it can get the photo details
 
 @interface FPImageSelectionButton : UIButton
 
@@ -16,6 +19,10 @@
 @end
 
 
+// The cell of the photos view table - containing a horizontal
+// array of images for selection, overlayed with buttons for
+// selecting the images, because UIImageView does not register
+// touch-up event correctly
 
 @interface FPPhotoViewCell : UITableViewCell
 

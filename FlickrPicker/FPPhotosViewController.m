@@ -98,8 +98,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger count = self.photos.count / 4;
-    if (self.photos.count % 4) count++;
+    NSInteger count = self.photos.count / 4 + 1;
+    //if (self.photos.count % 4) count++;
     return count;
 }
 
@@ -141,6 +141,7 @@ void setUpPhoto(NSDictionary *photo, UIImageView *photoHolder, NSMutableDictiona
         int photoIndex = indexPath.row * 4 + photoPosition;
         if (photoIndex < self.photos.count)
         {
+            [[cell.images objectAtIndex:photoPosition] setBackgroundColor:[UIColor lightGrayColor]];
             NSDictionary *photo = [self.photos objectAtIndex:photoIndex];
             setUpPhoto(photo, [cell.images objectAtIndex:photoPosition], self.thumbnailCache);
             FPImageSelectionButton *imageSelectionButton = (FPImageSelectionButton*)[cell.buttons objectAtIndex:photoPosition];
@@ -149,6 +150,7 @@ void setUpPhoto(NSDictionary *photo, UIImageView *photoHolder, NSMutableDictiona
         }
         else
         {
+            [[cell.images objectAtIndex:photoPosition] setBackgroundColor:[UIColor clearColor]];
             [[cell.images objectAtIndex:photoPosition] setImage:nil];
         }
     }
