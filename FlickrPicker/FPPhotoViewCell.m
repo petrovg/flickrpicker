@@ -42,6 +42,8 @@
         }
         self.images = [NSArray arrayWithArray:imgs];
         self.buttons = [NSArray arrayWithArray:btns];
+        
+        [self setSelectionStyle:UITableViewCellSelectionStyleNone];
     }
     return self;
 }
