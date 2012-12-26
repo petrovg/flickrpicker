@@ -72,17 +72,9 @@
 
 -(void) pickedPhoto:(id)sender
 {
-    FPFlickrImagePickerController *imagePicker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerController];
-    id<UIImagePickerControllerDelegate> pickerDelegate = imagePicker.delegate;
     FPImageSelectionButton *senderButton = (FPImageSelectionButton*) sender;
     NSLog(@"Selected image is %@", senderButton.photo);
-    NSURL *selectedPhotoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext] photoSourceURLFromDictionary:senderButton.photo size:OFFlickrMediumSize];
-    UIImage *selectedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:selectedPhotoURL]];
-    NSDictionary *imageInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                               @"public.image", UIImagePickerControllerMediaType,
-                               selectedImage, UIImagePickerControllerOriginalImage,
-                               selectedPhotoURL, UIImagePickerControllerReferenceURL ,nil];
-    [pickerDelegate imagePickerController:imagePicker didFinishPickingMediaWithInfo:imageInfo];
+    [[FlickrPicker sharedFlickrPicker] imagePicked:senderButton.photo];
 }
 
 #pragma mark - UITableViewDataSource

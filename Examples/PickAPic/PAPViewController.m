@@ -29,8 +29,7 @@
 }
 
 - (IBAction)pickImage:(id)sender {
-    FPFlickrImagePickerController *picker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerController];
-    [picker setDelegate:self];
+    UIViewController *picker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerControllerWithDelegate:self];
     [self presentViewController:picker animated:YES completion:nil];
 }
 

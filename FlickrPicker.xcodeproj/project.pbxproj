@@ -22,7 +22,6 @@
 		00DDE5B616720E2C009E811A /* libObjectiveFlickr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */; };
 		00DDE5B916721EE9009E811A /* FPPhotosetTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */; };
 		00EC1124167B17AA0013B3EC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */; };
-		00EC1130167CA20E0013B3EC /* FPFlickrImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC112F167CA20E0013B3EC /* FPFlickrImagePickerController.m */; };
 		00EC1138167D2C3F0013B3EC /* FPPhotosViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1134167D2C030013B3EC /* FPPhotosViewController.h */; };
 		00EC1139167D2C3F0013B3EC /* FPPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1135167D2C030013B3EC /* FPPhotosViewController.m */; };
 		00EC113A167D2C3F0013B3EC /* FPPhotoViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1136167D2C040013B3EC /* FPPhotoViewCell.h */; };
@@ -83,8 +82,6 @@
 		00DDE5B716721EE9009E811A /* FPPhotosetTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPhotosetTableCell.h; sourceTree = "<group>"; };
 		00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPhotosetTableCell.m; sourceTree = "<group>"; };
 		00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		00EC112E167CA20E0013B3EC /* FPFlickrImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlickrImagePickerController.h; sourceTree = "<group>"; };
-		00EC112F167CA20E0013B3EC /* FPFlickrImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFlickrImagePickerController.m; sourceTree = "<group>"; };
 		00EC1134167D2C030013B3EC /* FPPhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPPhotosViewController.h; sourceTree = "<group>"; };
 		00EC1135167D2C030013B3EC /* FPPhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPPhotosViewController.m; sourceTree = "<group>"; };
 		00EC1136167D2C040013B3EC /* FPPhotoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPPhotoViewCell.h; sourceTree = "<group>"; };
@@ -191,8 +188,6 @@
 				003810F61677DE6A00156B29 /* FlickrPicker.m */,
 				003810F816791E6000156B29 /* NSDictionary+Photoset.h */,
 				003810F916791E6000156B29 /* NSDictionary+Photoset.m */,
-				00EC112E167CA20E0013B3EC /* FPFlickrImagePickerController.h */,
-				00EC112F167CA20E0013B3EC /* FPFlickrImagePickerController.m */,
 				0030BF471685D4AE003817A0 /* SimpleKeychain.h */,
 				0030BF481685D4AE003817A0 /* SimpleKeychain.m */,
 			);
@@ -345,7 +340,6 @@
 				00DDE5B916721EE9009E811A /* FPPhotosetTableCell.m in Sources */,
 				003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */,
 				003810FA16791E6000156B29 /* NSDictionary+Photoset.m in Sources */,
-				00EC1130167CA20E0013B3EC /* FPFlickrImagePickerController.m in Sources */,
 				0030BF491685D4AE003817A0 /* SimpleKeychain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

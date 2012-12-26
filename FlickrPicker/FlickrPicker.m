@@ -8,7 +8,6 @@
 
 #import "FlickrPicker.h"
 #import <UIKit/UIKit.h>
-#import "FPFlickrImagePickerController.h"
 #import "FPPhotosetsController.h"
 #import "SimpleKeychain.h"
 
@@ -29,6 +28,9 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 @property (nonatomic, strong) void (^blockToRunAfterGettingPhotosets)(NSArray*);
 @property (nonatomic, strong) void (^blockToRunAfterGettingPhotos)(NSArray*);
 @property (nonatomic, strong) void (^blockToRunAfterGettingAPhoto)(NSArray*);
+@property (nonatomic, weak) id<UIImagePickerControllerDelegate> delegate;
+@property (nonatomic, strong, readonly) FPPhotosetsController *photosetsController;
+@property (nonatomic, strong) UIViewController *flickrPickerController;
 
 @end
 
@@ -37,7 +39,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 {
     OFFlickrAPIContext *flickrContext;
     OFFlickrAPIRequest *flickrRequest;
-    FPFlickrImagePickerController *flickrImagePickerController;
+    FPPhotosetsController *photosetsController;
 }
 
 +(FlickrPicker*)sharedFlickrPicker
@@ -51,15 +53,11 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 }
 
 #pragma mark Getting an image picker controller
-- (FPFlickrImagePickerController *)flickrImagePickerController
+- (UIViewController *)flickrImagePickerControllerWithDelegate:(id<UIImagePickerControllerDelegate>)delegate
 {
-	if (!flickrImagePickerController) {
-        FPPhotosetsController *photosetsViewController = [[FPPhotosetsController alloc] init];
-		flickrImagePickerController = [[FPFlickrImagePickerController alloc] initWithRootViewController:photosetsViewController];
-	}
-    [flickrImagePickerController popToRootViewControllerAnimated:NO];
-    
-	return flickrImagePickerController;
+	self.flickrPickerController = [[UINavigationController alloc] initWithRootViewController:self.photosetsController];
+    self.delegate = delegate;
+    return self.flickrPickerController;
 }
 
 #pragma mark Authorization
@@ -205,12 +203,31 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 	return flickrRequest;
 }
 
+-(FPPhotosetsController *) photosetsController
+{
+    if (!photosetsController)
+    {
+        photosetsController = [[FPPhotosetsController alloc] init];
+    }
+    return photosetsController;
+}
 
-#pragma mark Cancel selection
+
+#pragma mark Select or cancel selection
 -(void)cancel
 {
-    id<UIImagePickerControllerDelegate> delegate = self.flickrImagePickerController.delegate;
-    [delegate imagePickerControllerDidCancel:self.flickrImagePickerController];
+    [self.delegate imagePickerControllerDidCancel:self.flickrPickerController];
+}
+
+-(void)imagePicked:(NSDictionary *)photoInfo
+{
+    NSURL *selectedPhotoURL = [self.flickrContext photoSourceURLFromDictionary:photoInfo size:OFFlickrMediumSize];
+    UIImage *selectedImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:selectedPhotoURL]];
+    NSDictionary *imageInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                               @"public.image", UIImagePickerControllerMediaType,
+                               selectedImage, UIImagePickerControllerOriginalImage,
+                               selectedPhotoURL, UIImagePickerControllerReferenceURL ,nil];
+    [self.delegate imagePickerController:self.flickrPickerController didFinishPickingMediaWithInfo:imageInfo];
 }
 
 @end
