@@ -13,8 +13,7 @@
 
 @interface FPPhotosViewController ()
 
-@property NSMutableDictionary *thumbnailCache;
-@property NSArray *photos;
+
 @end
 
 @implementation FPPhotosViewController
@@ -31,7 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.thumbnailCache = [NSMutableDictionary dictionaryWithCapacity:self.photos.count];
+    self.model.thumbnailCache = [NSMutableDictionary dictionaryWithCapacity:100];
     [self.tableView registerClass:[FPPhotoViewCell class] forCellReuseIdentifier:@"PhotoCell"];
     
     // Add a cancel button
@@ -48,11 +47,11 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"View will appear. There are %d cache entries", self.thumbnailCache.count);
+    NSLog(@"View will appear. There are %d cache entries", self.model.thumbnailCache.count);
     [super viewWillAppear:animated];
     [[FlickrPicker sharedFlickrPicker] getPhotos:[self.photoset valueForKey:@"id"] completion:^(NSArray *photos){
         NSLog(@"Got %d photos", photos.count);
-        self.photos = photos;
+        self.model.photos = photos;
         [self.tableView reloadData];
     }];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
@@ -60,7 +59,7 @@
 
 -(void) viewDidDisappear:(BOOL)animated
 {
-    self.photos = nil;
+    self.model.photos = nil;
     [self.tableView reloadData];
     [super viewDidDisappear:animated];
 }
@@ -92,7 +91,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger count = self.photos.count / 4 + 1;
+    NSInteger count = self.model.photos.count / 4 + 1;
     //if (self.photos.count % 4) count++;
     return count;
 }
@@ -133,11 +132,11 @@ void setUpPhoto(NSDictionary *photo, UIImageView *photoHolder, NSMutableDictiona
     for (int photoPosition = 0; photoPosition < 4; photoPosition++)
     {
         int photoIndex = indexPath.row * 4 + photoPosition;
-        if (photoIndex < self.photos.count)
+        if (photoIndex < self.model.photos.count)
         {
             [[cell.images objectAtIndex:photoPosition] setBackgroundColor:[UIColor lightGrayColor]];
-            NSDictionary *photo = [self.photos objectAtIndex:photoIndex];
-            setUpPhoto(photo, [cell.images objectAtIndex:photoPosition], self.thumbnailCache);
+            NSDictionary *photo = [self.model.photos objectAtIndex:photoIndex];
+            setUpPhoto(photo, [cell.images objectAtIndex:photoPosition], self.model.thumbnailCache);
             FPImageSelectionButton *imageSelectionButton = (FPImageSelectionButton*)[cell.buttons objectAtIndex:photoPosition];
             imageSelectionButton.photo = photo;
             [imageSelectionButton addTarget:self action:@selector(pickedPhoto:) forControlEvents:UIControlEventTouchUpInside];

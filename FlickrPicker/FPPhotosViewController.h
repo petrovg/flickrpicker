@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FPFlickrPickerModel.h"
 
 @interface FPPhotosViewController : UITableViewController 
 
 @property NSDictionary *photoset;
+@property FPFlickrPickerModel *model;
 
 @end

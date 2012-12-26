@@ -18,7 +18,6 @@
 }
 
 // The photosets, collated by their first letter
-@property (strong, nonatomic) NSArray *collatedPhotosets;
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic, readonly) FPPhotosViewController *photosViewController;
 
@@ -37,12 +36,11 @@
         // Run this when authorized
         [[FlickrPicker sharedFlickrPicker] setBlockToRunWhenAuthorized:^{
             NSLog(@"OK, getting photosets and refresh the table view %@ now", self.tableView);
-            [[FlickrPicker sharedFlickrPicker] getPhotosets:^(NSArray *photosets) {
+            [[FlickrPicker sharedFlickrPicker] getPhotosets:^(NSArray *collatedPhotosets){
                 // This will run when the photosets are here
-                self.collatedPhotosets = collatePhotosets(photosets);
-                NSLog(@"Collated photosets are %@", self.collatedPhotosets);
                 [self.tableView reloadData];
                 [self.activityIndicator stopAnimating];
+                NSLog(@"Stopped animating?... Hmmmm...");
                 }];
             }];
         [[FlickrPicker sharedFlickrPicker] authorize];
@@ -74,29 +72,14 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
 }
 
-NSArray* collatePhotosets(NSArray* rawPhotosets)
-{
-    NSMutableArray *sections = [[NSMutableArray alloc] initWithCapacity:30];
-    UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
-    for (int i = 0; i < collation.sectionIndexTitles.count; i++)
-    {
-        [sections addObject:[NSMutableArray arrayWithCapacity:(rawPhotosets.count / collation.sectionIndexTitles.count + 5)]];
-    }
-    for (NSDictionary *photoset in rawPhotosets)
-    {
-        NSInteger sectionIndex = [collation sectionForObject:photoset collationStringSelector:@selector(photosetName)];
-        [[sections objectAtIndex:sectionIndex] addObject:photoset];
-    }
-    return [NSArray arrayWithArray:sections];
-}
-
 #pragma mark UITableViewDelegate
 
 -(void) tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Chosen photoset at index path: %@", indexPath);
     FPPhotosViewController *photosViewController = self.photosViewController;
-    photosViewController.photoset = [[self.collatedPhotosets objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    photosViewController.model = self.model;
+    photosViewController.photoset = [[self.model.collatedPhotosets objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:photosViewController animated:YES];
 }
 
@@ -106,20 +89,26 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
 #pragma mark UITableViewDataSource
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return self.collatedPhotosets.count;
+    NSInteger count = self.model.collatedPhotosets.count;
+    NSLog(@"(1) Returning count %d", count);
+    return count;
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[self.collatedPhotosets objectAtIndex:section] count];
+    NSInteger count = [[self.model.collatedPhotosets objectAtIndex:section] count];
+    NSLog(@"(2) Returning count %d for section %d", count, section);
+    return count;
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"(3) About to make a cell for index path %@", indexPath);
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PhotosetCell"];
-    NSArray *section = [self.collatedPhotosets objectAtIndex:indexPath.section];
+    NSArray *section = [self.model.collatedPhotosets objectAtIndex:indexPath.section];
     NSDictionary *photoset = [section objectAtIndex:indexPath.row];
     [cell.textLabel setText:[photoset valueForKeyPath:@"title._text"]];
+    NSLog(@"(4) Made a cell: %@", cell);
     return cell;
 }
 

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "ObjectiveFlickr.h"
+#import "FPFlickrPickerModel.h"
 
 
 //
@@ -21,6 +22,6 @@
 
 // The delegate that will be notified when the image picking is complete
 @property (weak, nonatomic) id <UITableViewDelegate> delegate;
-
+@property (nonatomic, weak) FPFlickrPickerModel *model;
 
 @end

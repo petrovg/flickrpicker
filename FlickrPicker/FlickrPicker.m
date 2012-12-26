@@ -31,6 +31,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 @property (nonatomic, weak) id<UIImagePickerControllerDelegate> delegate;
 @property (nonatomic, strong, readonly) FPPhotosetsController *photosetsController;
 @property (nonatomic, strong) UIViewController *flickrPickerController;
+@property (nonatomic, strong, readonly) FPFlickrPickerModel *model;
 
 @end
 
@@ -40,6 +41,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     OFFlickrAPIContext *flickrContext;
     OFFlickrAPIRequest *flickrRequest;
     FPPhotosetsController *photosetsController;
+    FPFlickrPickerModel *model;
 }
 
 +(FlickrPicker*)sharedFlickrPicker
@@ -151,14 +153,31 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     self.blockToRunWhenAuthorized();
 }
 
+NSArray* collatePhotosets(NSArray* rawPhotosets)
+{
+    NSMutableArray *sections = [[NSMutableArray alloc] initWithCapacity:30];
+    UILocalizedIndexedCollation *collation = [UILocalizedIndexedCollation currentCollation];
+    for (int i = 0; i < collation.sectionIndexTitles.count; i++)
+    {
+        [sections addObject:[NSMutableArray arrayWithCapacity:(rawPhotosets.count / collation.sectionIndexTitles.count + 5)]];
+    }
+    for (NSDictionary *photoset in rawPhotosets)
+    {
+        NSInteger sectionIndex = [collation sectionForObject:photoset collationStringSelector:@selector(photosetName)];
+        [[sections objectAtIndex:sectionIndex] addObject:photoset];
+    }
+    return [NSArray arrayWithArray:sections];
+}
+
 -(void) flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary
 {
     NSLog(@"Response received for session: %@", self.flickrRequest.sessionInfo);
-    if (self.flickrRequest.sessionInfo == kFPRequestSessionGettingPhotosets
-        )
+    if (self.flickrRequest.sessionInfo == kFPRequestSessionGettingPhotosets)
     {
         NSArray *photosets = [inResponseDictionary valueForKeyPath:@"photosets.photoset"];
-        self.blockToRunAfterGettingPhotosets(photosets);
+        self.model.collatedPhotosets = collatePhotosets(photosets);
+        NSLog(@"Collated photosets are %@", self.model.collatedPhotosets);
+        self.blockToRunAfterGettingPhotosets(self.model.collatedPhotosets);
         [self setBlockToRunWhenAuthorized:nil];
         [self.flickrRequest setSessionInfo:nil];
     }
@@ -206,13 +225,22 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 	return flickrRequest;
 }
 
+// Makes a new photoset controller every time
 -(FPPhotosetsController *) photosetsController
 {
-    if (!photosetsController)
-    {
-        photosetsController = [[FPPhotosetsController alloc] init];
-    }
+    photosetsController = [[FPPhotosetsController alloc] init];
+    photosetsController.model = self.model;
     return photosetsController;
+}
+
+// Returns the same model, if there isn't one it makes its
+-(FPFlickrPickerModel *) model
+{
+    if (!model)
+    {
+        model = [[FPFlickrPickerModel alloc] init];
+    }
+    return model;
 }
 
 
