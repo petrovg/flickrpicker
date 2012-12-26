@@ -10,14 +10,14 @@ FlickrPicker is used the way you would use a UIImagePickerController. You presen
     - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
 
 
-# Getting started
+## Getting started
 
 * Add the FlickrPicker project to your project
 * Create a callback URL so that your app can be notified after user grants permissions
 * Add Security.framework to Link binary with libraries in the Build phases
 
 
-# TO DO
+## TO DO
 
 
 * Replace activity indicators with a single one

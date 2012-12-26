@@ -49,18 +49,19 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"View will appear. There are %d cache entries", self.thumbnailCache.count);
+    [super viewWillAppear:animated];
     [[FlickrPicker sharedFlickrPicker] getPhotos:[self.photoset valueForKey:@"id"] completion:^(NSArray *photos){
         NSLog(@"Got %d photos", photos.count);
         self.photos = photos;
         [self.tableView reloadData];
     }];
-
 }
 
 -(void) viewDidDisappear:(BOOL)animated
 {
     self.photos = nil;
     [self.tableView reloadData];
+    [super viewDidDisappear:animated];
 }
 
 - (void)didReceiveMemoryWarning
