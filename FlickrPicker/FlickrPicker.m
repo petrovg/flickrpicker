@@ -57,6 +57,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
         FPPhotosetsController *photosetsViewController = [[FPPhotosetsController alloc] init];
 		flickrImagePickerController = [[FPFlickrImagePickerController alloc] initWithRootViewController:photosetsViewController];
 	}
+    [flickrImagePickerController popToRootViewControllerAnimated:NO];
     
 	return flickrImagePickerController;
 }
