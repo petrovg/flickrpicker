@@ -69,6 +69,11 @@
     [self setWantsFullScreenLayout:YES];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
+}
+
 NSArray* collatePhotosets(NSArray* rawPhotosets)
 {
     NSMutableArray *sections = [[NSMutableArray alloc] initWithCapacity:30];

@@ -55,6 +55,7 @@
         self.photos = photos;
         [self.tableView reloadData];
     }];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
 }
 
 -(void) viewDidDisappear:(BOOL)animated

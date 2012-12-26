@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0030BF491685D4AE003817A0 /* SimpleKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030BF481685D4AE003817A0 /* SimpleKeychain.m */; };
+		0030BF5A168B73A2003817A0 /* FPFlickrPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030BF59168B73A2003817A0 /* FPFlickrPickerModel.m */; };
 		003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F61677DE6A00156B29 /* FlickrPicker.m */; };
 		003810FA16791E6000156B29 /* NSDictionary+Photoset.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F916791E6000156B29 /* NSDictionary+Photoset.m */; };
 		00DDE5751670F663009E811A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5741670F663009E811A /* Foundation.framework */; };
@@ -64,6 +65,8 @@
 /* Begin PBXFileReference section */
 		0030BF471685D4AE003817A0 /* SimpleKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKeychain.h; sourceTree = "<group>"; };
 		0030BF481685D4AE003817A0 /* SimpleKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKeychain.m; sourceTree = "<group>"; };
+		0030BF58168B73A2003817A0 /* FPFlickrPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlickrPickerModel.h; sourceTree = "<group>"; };
+		0030BF59168B73A2003817A0 /* FPFlickrPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFlickrPickerModel.m; sourceTree = "<group>"; };
 		003810F51677DE6A00156B29 /* FlickrPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPicker.h; sourceTree = "<group>"; };
 		003810F61677DE6A00156B29 /* FlickrPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPicker.m; sourceTree = "<group>"; };
 		003810F816791E6000156B29 /* NSDictionary+Photoset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Photoset.h"; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 				003810F916791E6000156B29 /* NSDictionary+Photoset.m */,
 				0030BF471685D4AE003817A0 /* SimpleKeychain.h */,
 				0030BF481685D4AE003817A0 /* SimpleKeychain.m */,
+				0030BF58168B73A2003817A0 /* FPFlickrPickerModel.h */,
+				0030BF59168B73A2003817A0 /* FPFlickrPickerModel.m */,
 			);
 			name = Source;
 			path = FlickrPicker;
@@ -341,6 +346,7 @@
 				003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */,
 				003810FA16791E6000156B29 /* NSDictionary+Photoset.m in Sources */,
 				0030BF491685D4AE003817A0 /* SimpleKeychain.m in Sources */,
+				0030BF5A168B73A2003817A0 /* FPFlickrPickerModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +403,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -417,7 +423,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

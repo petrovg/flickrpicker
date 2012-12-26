@@ -30,6 +30,7 @@
 
 - (IBAction)pickImage:(id)sender {
     UIViewController *picker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerControllerWithDelegate:self];
+    NSLog(@"Using picker %@", picker);
     [self presentViewController:picker animated:YES completion:nil];
 }
 

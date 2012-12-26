@@ -55,7 +55,10 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 #pragma mark Getting an image picker controller
 - (UIViewController *)flickrImagePickerControllerWithDelegate:(id<UIImagePickerControllerDelegate>)delegate
 {
-	self.flickrPickerController = [[UINavigationController alloc] initWithRootViewController:self.photosetsController];
+	UINavigationController *flickrPickerController = [[UINavigationController alloc] initWithRootViewController:self.photosetsController];
+    [flickrPickerController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
+    NSLog(@"Offsets are: photosets %f", self.photosetsController.tableView.contentOffset.y);
+    self.flickrPickerController = flickrPickerController;
     self.delegate = delegate;
     return self.flickrPickerController;
 }
