@@ -43,6 +43,9 @@
     
     // Take up the whole screen
     [self setWantsFullScreenLayout:YES];
+    
+    // A footer to make the bottom end look nice
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, 4)]];
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -92,7 +95,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = self.model.photos.count / 4 + 1;
-    //if (self.photos.count % 4) count++;
+    if (self.model.photos.count % 4 == 0) count--;
     return count;
 }
 
