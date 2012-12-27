@@ -232,6 +232,7 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
     if (!model)
     {
         model = [[FPFlickrPickerModel alloc] init];
+        model.thumbnailCache = [[NSMutableDictionary alloc] initWithCapacity:100];
     }
     return model;
 }

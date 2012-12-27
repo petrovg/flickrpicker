@@ -30,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.model.thumbnailCache = [NSMutableDictionary dictionaryWithCapacity:100];
     [self.tableView registerClass:[FPPhotoViewCell class] forCellReuseIdentifier:@"PhotoCell"];
     
     // Add a cancel button
