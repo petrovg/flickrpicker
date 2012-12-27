@@ -119,7 +119,7 @@
                 NSURL *photoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext] photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    [imageView setImage:image];
+                    [[((FPPhotoViewCell *)[self.tableView cellForRowAtIndexPath:indexPath]).images objectAtIndex:photoPosition] setImage:image];
                 });
             });
 
