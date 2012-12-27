@@ -37,18 +37,13 @@
         [[FlickrPicker sharedFlickrPicker] setBlockToRunWhenAuthorized:^{
 
             // Show activity indicator
-            self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            self.activityIndicator.frame = self.view.bounds;
-            self.activityIndicator.hidesWhenStopped = YES;
-            [self.view addSubview:self.activityIndicator];
-            [self.activityIndicator startAnimating];
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             
             // Fetch photosets and reload
             [[FlickrPicker sharedFlickrPicker] getPhotosets:^(NSArray *collatedPhotosets){
                 // This will run when the photosets are here
                 [self.tableView reloadData];
-                [self.activityIndicator stopAnimating];
-                [self reloadInputViews];
+                [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 }];
             }];
         [[FlickrPicker sharedFlickrPicker] authorize];
