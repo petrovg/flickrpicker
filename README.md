@@ -19,6 +19,5 @@ FlickrPicker is used the way you would use a UIImagePickerController. You presen
 
 ## TO DO
 
-
+* Test in a popover on iPad
 * Replace activity indicators with a single one
-* At the moment it is possible to "select" a cell in the photo selection view. This is ugly - fix.

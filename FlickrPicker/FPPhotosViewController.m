@@ -98,12 +98,13 @@
     return count;
 }
 
-void setUpPhoto(NSDictionary *photo, UIImageView *photoHolder, NSMutableDictionary* cache) {
+-(void) setUpPhoto:(NSDictionary *)photo holder:(UIImageView *)photoHolder
+{
     [photoHolder setImage:nil];
     static NSString *FPFlickrSquareSize = @"q";
     NSURL *photoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext]
                        photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
-    UIImage *cachedThumb = [cache objectForKey:photoURL];
+    UIImage *cachedThumb = [self.model.thumbnailCache objectForKey:photoURL];
     
     if (cachedThumb)
     {
@@ -121,7 +122,7 @@ void setUpPhoto(NSDictionary *photo, UIImageView *photoHolder, NSMutableDictiona
             [photoHolder setImage:image];
             //[activityIndicator stopAnimating];
             //[activityIndicator removeFromSuperview];
-            [cache setObject:image forKey:photoURL];
+            [self.model.thumbnailCache setObject:image forKey:photoURL];
         });
     }
 }
@@ -138,7 +139,7 @@ void setUpPhoto(NSDictionary *photo, UIImageView *photoHolder, NSMutableDictiona
         {
             [[cell.images objectAtIndex:photoPosition] setBackgroundColor:[UIColor lightGrayColor]];
             NSDictionary *photo = [self.model.photos objectAtIndex:photoIndex];
-            setUpPhoto(photo, [cell.images objectAtIndex:photoPosition], self.model.thumbnailCache);
+            [self setUpPhoto:photo holder:[cell.images objectAtIndex:photoPosition]];
             FPImageSelectionButton *imageSelectionButton = (FPImageSelectionButton*)[cell.buttons objectAtIndex:photoPosition];
             imageSelectionButton.photo = photo;
             [imageSelectionButton addTarget:self action:@selector(pickedPhoto:) forControlEvents:UIControlEventTouchUpInside];
