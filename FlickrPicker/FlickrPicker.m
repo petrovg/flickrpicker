@@ -105,7 +105,6 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 {
     self.blockToRunAfterGettingPhotosets = completion;
     // Initialise the context and request and ask for the photoset list
-    NSLog(@"Requesting photosets");
     self.flickrRequest.sessionInfo = kFPRequestSessionGettingPhotosets;
     [self.flickrRequest setSessionInfo:kFPRequestSessionGettingPhotosets];
     [self.flickrRequest callAPIMethodWithGET:@"flickr.photosets.getList" arguments:nil];
@@ -115,7 +114,6 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 {
     self.blockToRunAfterGettingPhotos = completion;
     // Initialise the context and request and ask for the photos
-    NSLog(@"Requesting photos");
     self.flickrRequest.sessionInfo = kFPRequestSessionGettingPhotos;
     [self.flickrRequest setSessionInfo:kFPRequestSessionGettingPhotos];
     [[self flickrRequest] callAPIMethodWithGET:@"flickr.photosets.getPhotos" arguments:[NSDictionary dictionaryWithObjectsAndKeys:photosetId, @"photoset_id", nil]];
@@ -125,7 +123,6 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 {
     self.blockToRunAfterGettingAPhoto = completion;
     // Initialise the context and request and ask for the photos
-    NSLog(@"Requesting photos");
     self.flickrRequest.sessionInfo = kFPRequestSessionGettingPhotos;
     [self.flickrRequest setSessionInfo:kFPRequestSessionGettingPhotos];
 }
@@ -133,17 +130,14 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 #pragma mark OFFlickrAPIRequestDelegate
 -(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didObtainOAuthRequestToken:(NSString *)inRequestToken secret:(NSString *)inSecret
 {
-    NSLog(@"Got token: %@ and secret: %@", inRequestToken, inSecret);
     [self.flickrContext setOAuthToken:inRequestToken];
     [self.flickrContext setOAuthTokenSecret:inSecret];
     NSURL *authURL = [[FlickrPicker sharedFlickrPicker].flickrContext userAuthorizationURLWithRequestToken:inRequestToken requestedPermission:OFFlickrReadPermission];
-    NSLog(@"Opening authURL %@", authURL);
     [[UIApplication sharedApplication] openURL:authURL];
 }
 
 -(void)flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didObtainOAuthAccessToken:(NSString *)inAccessToken secret:(NSString *)inSecret userFullName:(NSString *)inFullName userName:(NSString *)inUserName userNSID:(NSString *)inNSID
 {
-    NSLog(@"Got access token: %@, secret %@, user full name %@ and id %@", inAccessToken, inSecret, inFullName, inNSID);
     self.flickrContext.OAuthToken = inAccessToken;
     self.flickrContext.OAuthTokenSecret = inSecret;
     self.userId = inNSID;
@@ -173,12 +167,10 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
 
 -(void) flickrAPIRequest:(OFFlickrAPIRequest *)inRequest didCompleteWithResponse:(NSDictionary *)inResponseDictionary
 {
-    NSLog(@"Response received for session: %@", self.flickrRequest.sessionInfo);
     if (self.flickrRequest.sessionInfo == kFPRequestSessionGettingPhotosets)
     {
         NSArray *photosets = [inResponseDictionary valueForKeyPath:@"photosets.photoset"];
         self.model.collatedPhotosets = collatePhotosets(photosets);
-        NSLog(@"Collated photosets are %@", self.model.collatedPhotosets);
         self.blockToRunAfterGettingPhotosets(self.model.collatedPhotosets);
         [self.model setPhotosetsLoaded:YES];
         [self.flickrRequest setSessionInfo:nil];

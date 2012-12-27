@@ -49,10 +49,8 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"View will appear. There are %d cache entries", self.model.thumbnailCache.count);
     [super viewWillAppear:animated];
     [[FlickrPicker sharedFlickrPicker] getPhotos:[self.photoset valueForKey:@"id"] completion:^(NSArray *photos){
-        NSLog(@"Got %d photos", photos.count);
         self.model.photos = photos;
         [self.tableView reloadData];
     }];
@@ -75,7 +73,6 @@
 -(void) pickedPhoto:(id)sender
 {
     FPImageSelectionButton *senderButton = (FPImageSelectionButton*) sender;
-    NSLog(@"Selected image is %@", senderButton.photo);
     [[FlickrPicker sharedFlickrPicker] imagePicked:senderButton.photo];
 }
 
@@ -113,15 +110,8 @@
     
     else {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
-            //UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-            //activityIndicator.frame = photoHolder.bounds;
-            //activityIndicator.hidesWhenStopped = YES;
-            //[photoHolder addSubview:activityIndicator];
-            //[activityIndicator startAnimating];
             UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
             [photoHolder setImage:image];
-            //[activityIndicator stopAnimating];
-            //[activityIndicator removeFromSuperview];
             [self.model.thumbnailCache setObject:image forKey:photoURL];
         });
     }

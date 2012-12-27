@@ -77,7 +77,6 @@
 
 -(void) tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"Chosen photoset at index path: %@", indexPath);
     FPPhotosViewController *photosViewController = self.photosViewController;
     photosViewController.model = self.model;
     photosViewController.photoset = [[self.model.collatedPhotosets objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
