@@ -128,9 +128,30 @@
         int photoIndex = indexPath.row * 4 + photoPosition;
         if (photoIndex < self.model.photos.count)
         {
-            [[cell.images objectAtIndex:photoPosition] setBackgroundColor:[UIColor lightGrayColor]];
             NSDictionary *photo = [self.model.photos objectAtIndex:photoIndex];
-            [self setUpPhoto:photo holder:[cell.images objectAtIndex:photoPosition]];
+
+            
+            // Clear the image
+            UIImageView *imageView = [cell.images objectAtIndex:photoPosition];
+            [imageView setBackgroundColor:[UIColor lightGrayColor]];
+            [imageView setImage:nil];
+
+
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
+                static NSString *FPFlickrSquareSize = @"q";
+                NSURL *photoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext] photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
+                UIImage *image = [self.model.thumbnailCache objectForKey:photoURL];
+                if (!image) {
+                    image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+                    [self.model.thumbnailCache setObject:image forKey:photoURL];
+                }
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [imageView setImage:image];
+                });
+                
+            });
+
+            // Configure the button
             FPImageSelectionButton *imageSelectionButton = (FPImageSelectionButton*)[cell.buttons objectAtIndex:photoPosition];
             imageSelectionButton.photo = photo;
             [imageSelectionButton addTarget:self action:@selector(pickedPhoto:) forControlEvents:UIControlEventTouchUpInside];
