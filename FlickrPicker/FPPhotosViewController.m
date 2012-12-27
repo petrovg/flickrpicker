@@ -13,6 +13,7 @@
 
 @interface FPPhotosViewController ()
 
+@property (strong, nonatomic) NSMutableDictionary *thumbsCache;
 
 @end
 
@@ -52,6 +53,7 @@
     [super viewWillAppear:animated];
     [[FlickrPicker sharedFlickrPicker] getPhotos:[self.photoset valueForKey:@"id"] completion:^(NSArray *photos){
         self.model.photos = photos;
+        self.thumbsCache = [[NSMutableDictionary alloc] initWithCapacity:photos.count];
         [self.tableView reloadData];
     }];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
@@ -117,7 +119,12 @@
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
                 static NSString *FPFlickrSquareSize = @"q";
                 NSURL *photoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext] photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+                UIImage *image = [self.thumbsCache objectForKey:photoURL];
+                if (!image)
+                {
+                    image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
+                    [self.thumbsCache setObject:image forKey:photoURL];
+                }
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [[((FPPhotoViewCell *)[self.tableView cellForRowAtIndexPath:indexPath]).images objectAtIndex:photoPosition] setImage:image];
                 });

@@ -19,6 +19,7 @@ FlickrPicker is used the way you would use a UIImagePickerController. You presen
 
 ## TO DO
 
+* Show recent photo as a separate photoset at the top
 * Test in a popover on iPad
 * Replace activity indicators with a single one
 * Make it only support portrait orientation
