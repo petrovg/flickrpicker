@@ -11,7 +11,7 @@
 @interface FPFlickrPickerModel : NSObject
 
 @property (strong, nonatomic) NSArray *collatedPhotosets;
-@property NSMutableDictionary *thumbnailCache;
-@property NSArray *photos;
-
+@property (strong, nonatomic) NSMutableDictionary *thumbnailCache;
+@property (strong, nonatomic) NSArray *photos;
+@property (nonatomic) BOOL photosetsLoaded;
 @end

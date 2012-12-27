@@ -29,7 +29,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 @property (nonatomic, strong) void (^blockToRunAfterGettingPhotos)(NSArray*);
 @property (nonatomic, strong) void (^blockToRunAfterGettingAPhoto)(NSArray*);
 @property (nonatomic, weak) id<UIImagePickerControllerDelegate> delegate;
-@property (nonatomic, strong, readonly) FPPhotosetsController *photosetsController;
+@property (nonatomic, strong) FPPhotosetsController *photosetsController;
 @property (nonatomic, strong) UIViewController *flickrPickerController;
 @property (nonatomic, strong, readonly) FPFlickrPickerModel *model;
 
@@ -57,9 +57,11 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 #pragma mark Getting an image picker controller
 - (UIViewController *)flickrImagePickerControllerWithDelegate:(id<UIImagePickerControllerDelegate>)delegate
 {
+    // The UI is rebuilt every time and the existing model is injected
+    self.photosetsController = [[FPPhotosetsController alloc] init];
+    self.photosetsController.model = self.model;
 	UINavigationController *flickrPickerController = [[UINavigationController alloc] initWithRootViewController:self.photosetsController];
     [flickrPickerController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
-    NSLog(@"Offsets are: photosets %f", self.photosetsController.tableView.contentOffset.y);
     self.flickrPickerController = flickrPickerController;
     self.delegate = delegate;
     return self.flickrPickerController;
@@ -178,14 +180,13 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
         self.model.collatedPhotosets = collatePhotosets(photosets);
         NSLog(@"Collated photosets are %@", self.model.collatedPhotosets);
         self.blockToRunAfterGettingPhotosets(self.model.collatedPhotosets);
-        [self setBlockToRunWhenAuthorized:nil];
+        [self.model setPhotosetsLoaded:YES];
         [self.flickrRequest setSessionInfo:nil];
     }
     else if (self.flickrRequest.sessionInfo == kFPRequestSessionGettingPhotos)
     {
         NSArray *photos = [inResponseDictionary valueForKeyPath:@"photoset.photo"];
         self.blockToRunAfterGettingPhotos(photos);
-        [self setBlockToRunWhenAuthorized:nil];
         [self.flickrRequest setSessionInfo:nil];
     }
 }
@@ -223,14 +224,6 @@ NSArray* collatePhotosets(NSArray* rawPhotosets)
     flickrRequest.delegate = self;
 	
 	return flickrRequest;
-}
-
-// Makes a new photoset controller every time
--(FPPhotosetsController *) photosetsController
-{
-    photosetsController = [[FPPhotosetsController alloc] init];
-    photosetsController.model = self.model;
-    return photosetsController;
 }
 
 // Returns the same model, if there isn't one it makes its

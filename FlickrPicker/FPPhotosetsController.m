@@ -35,12 +35,20 @@
     {
         // Run this when authorized
         [[FlickrPicker sharedFlickrPicker] setBlockToRunWhenAuthorized:^{
-            NSLog(@"OK, getting photosets and refresh the table view %@ now", self.tableView);
+
+            // Show activity indicator
+            self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            self.activityIndicator.frame = self.view.bounds;
+            self.activityIndicator.hidesWhenStopped = YES;
+            [self.view addSubview:self.activityIndicator];
+            [self.activityIndicator startAnimating];
+            
+            // Fetch photosets and reload
             [[FlickrPicker sharedFlickrPicker] getPhotosets:^(NSArray *collatedPhotosets){
                 // This will run when the photosets are here
                 [self.tableView reloadData];
                 [self.activityIndicator stopAnimating];
-                NSLog(@"Stopped animating?... Hmmmm...");
+                [self reloadInputViews];
                 }];
             }];
         [[FlickrPicker sharedFlickrPicker] authorize];
@@ -51,13 +59,6 @@
     
     // Init the table view
     [self.tableView registerClass:[FPPhotosetTableCell class] forCellReuseIdentifier:@"PhotosetCell"];
-    
-    // Show activity indicator
-    self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    self.activityIndicator.frame = self.view.bounds;
-    self.activityIndicator.hidesWhenStopped = YES;
-    [self.view addSubview:self.activityIndicator];
-    [self.activityIndicator startAnimating];
     
     // Add a cancel button
     UIBarButtonItem *cancelButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:[FlickrPicker sharedFlickrPicker] action:@selector(cancel)];
@@ -90,25 +91,21 @@
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
     NSInteger count = self.model.collatedPhotosets.count;
-    NSLog(@"(1) Returning count %d", count);
     return count;
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = [[self.model.collatedPhotosets objectAtIndex:section] count];
-    NSLog(@"(2) Returning count %d for section %d", count, section);
     return count;
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"(3) About to make a cell for index path %@", indexPath);
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PhotosetCell"];
     NSArray *section = [self.model.collatedPhotosets objectAtIndex:indexPath.section];
     NSDictionary *photoset = [section objectAtIndex:indexPath.row];
     [cell.textLabel setText:[photoset valueForKeyPath:@"title._text"]];
-    NSLog(@"(4) Made a cell: %@", cell);
     return cell;
 }
 
