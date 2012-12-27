@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0030BF491685D4AE003817A0 /* SimpleKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030BF481685D4AE003817A0 /* SimpleKeychain.m */; };
 		0030BF5A168B73A2003817A0 /* FPFlickrPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030BF59168B73A2003817A0 /* FPFlickrPickerModel.m */; };
+		0030BF66168C8CAC003817A0 /* Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 0030BF65168C8CAC003817A0 /* Gray.png */; };
 		003810F71677DE6A00156B29 /* FlickrPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F61677DE6A00156B29 /* FlickrPicker.m */; };
 		003810FA16791E6000156B29 /* NSDictionary+Photoset.m in Sources */ = {isa = PBXBuildFile; fileRef = 003810F916791E6000156B29 /* NSDictionary+Photoset.m */; };
 		00DDE5751670F663009E811A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5741670F663009E811A /* Foundation.framework */; };
@@ -67,6 +68,7 @@
 		0030BF481685D4AE003817A0 /* SimpleKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKeychain.m; sourceTree = "<group>"; };
 		0030BF58168B73A2003817A0 /* FPFlickrPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlickrPickerModel.h; sourceTree = "<group>"; };
 		0030BF59168B73A2003817A0 /* FPFlickrPickerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPFlickrPickerModel.m; sourceTree = "<group>"; };
+		0030BF65168C8CAC003817A0 /* Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gray.png; sourceTree = "<group>"; };
 		003810F51677DE6A00156B29 /* FlickrPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPicker.h; sourceTree = "<group>"; };
 		003810F61677DE6A00156B29 /* FlickrPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPicker.m; sourceTree = "<group>"; };
 		003810F816791E6000156B29 /* NSDictionary+Photoset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Photoset.h"; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 		00DDE5661670F663009E811A = {
 			isa = PBXGroup;
 			children = (
+				0030BF65168C8CAC003817A0 /* Gray.png */,
 				00EC115F1682410A0013B3EC /* Security.framework */,
 				00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */,
 				00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */,
@@ -327,6 +330,7 @@
 				00EC114D167DE4A10013B3EC /* Default@2x.png in Resources */,
 				00EC114E167DE4A10013B3EC /* InfoPlist.strings in Resources */,
 				00EC114F167DE4A10013B3EC /* MainStoryboard.storyboard in Resources */,
+				0030BF66168C8CAC003817A0 /* Gray.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

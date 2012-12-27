@@ -101,20 +101,21 @@
     static NSString *FPFlickrSquareSize = @"q";
     NSURL *photoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext]
                        photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
-    UIImage *cachedThumb = [self.model.thumbnailCache objectForKey:photoURL];
+
+    [photoHolder setImage:[UIImage imageNamed:@"Gray.png"]];
     
-    if (cachedThumb)
-    {
-        [photoHolder setImage:cachedThumb];
-    }
-    
-    else {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
-            UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
-            [photoHolder setImage:image];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
+        UIImage *image = [self.model.thumbnailCache objectForKey:photoURL];
+        if (!image) {
+            image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
             [self.model.thumbnailCache setObject:image forKey:photoURL];
+        }
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [photoHolder setImage:image];
         });
-    }
+        
+    });
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
