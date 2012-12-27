@@ -95,29 +95,6 @@
     return count;
 }
 
--(void) setUpPhoto:(NSDictionary *)photo holder:(UIImageView *)photoHolder
-{
-    [photoHolder setImage:nil];
-    static NSString *FPFlickrSquareSize = @"q";
-    NSURL *photoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext]
-                       photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
-
-    [photoHolder setImage:[UIImage imageNamed:@"Gray.png"]];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
-        UIImage *image = [self.model.thumbnailCache objectForKey:photoURL];
-        if (!image) {
-            image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
-            [self.model.thumbnailCache setObject:image forKey:photoURL];
-        }
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [photoHolder setImage:image];
-        });
-        
-    });
-
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"PhotoCell";
@@ -136,19 +113,14 @@
             [imageView setBackgroundColor:[UIColor lightGrayColor]];
             [imageView setImage:nil];
 
-
+            // Get photos and update the image on a different queue
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
                 static NSString *FPFlickrSquareSize = @"q";
                 NSURL *photoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext] photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
-                UIImage *image = [self.model.thumbnailCache objectForKey:photoURL];
-                if (!image) {
-                    image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
-                    [self.model.thumbnailCache setObject:image forKey:photoURL];
-                }
+                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:photoURL]];
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     [imageView setImage:image];
                 });
-                
             });
 
             // Configure the button
