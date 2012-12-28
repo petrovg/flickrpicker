@@ -22,16 +22,14 @@
     NSLog(@"Opening url %@", url);
     NSString *token = nil;
     NSString *verifier = nil;
-    BOOL result = OFExtractOAuthCallback(url, [NSURL URLWithString:@"flickrpicker://auth"], &token, &verifier);
+    BOOL result = [[FlickrPicker sharedFlickrPicker] requestToken:url callbackURL:[NSURL URLWithString:@"flickrpicker://auth"] token:token verifier:verifier];
     
     if (!result) {
         NSLog(@"Cannot obtain token/secret from URL: %@", [url absoluteString]);
         return NO;
     }
     
-    OFFlickrAPIRequest *request = [FlickrPicker sharedFlickrPicker].flickrRequest;
-    request.sessionInfo = @"kGetAccessTokenStep";
-    [request fetchOAuthAccessTokenWithRequestToken:token verifier:verifier];
+    [[FlickrPicker sharedFlickrPicker] getFullAccessWithToken:token andVerifier:verifier];
 
     return YES;
 }

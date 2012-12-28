@@ -41,6 +41,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0030BF85168E1D50003817A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 00DDE5841671053F009E811A /* ObjectiveFlickr.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6ABF72E50F939BE600B9179E;
+			remoteInfo = "ObjectiveFlickr (library)";
+		};
 		003810F21677D0ED00156B29 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 00DDE5841671053F009E811A /* ObjectiveFlickr.xcodeproj */;
@@ -254,6 +261,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				0030BF86168E1D50003817A0 /* PBXTargetDependency */,
 			);
 			name = FlickrPicker;
 			productName = FlickrPicker;
@@ -365,6 +373,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0030BF86168E1D50003817A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ObjectiveFlickr (library)";
+			targetProxy = 0030BF85168E1D50003817A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		00EC1140167DE4A10013B3EC /* InfoPlist.strings */ = {

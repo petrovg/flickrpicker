@@ -119,8 +119,7 @@
 
             // Get photos and update the image on a different queue
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(void) {
-                static NSString *FPFlickrSquareSize = @"q";
-                NSURL *photoURL = [[[FlickrPicker sharedFlickrPicker] flickrContext] photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
+                NSURL *photoURL = [[FlickrPicker sharedFlickrPicker] getURLForPhoto:(NSDictionary *)photo];
                 UIImage *image = [self.thumbsCache objectForKey:photoURL];
                 if (!image)
                 {

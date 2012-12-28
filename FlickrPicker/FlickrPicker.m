@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "FPPhotosetsController.h"
 #import "SimpleKeychain.h"
+#import "ObjectiveFlickr.h"
 
 NSString *kFPSecAttrServiceFlickr = @"kSecAttrServiceFlickr";
 NSString *kFPAuthTokenKey = @"kFPAuthTokenKey";
@@ -22,7 +23,10 @@ NSString *kFPPhotoSetTypePhotoset = @"kFPPhotoSetTypePhotoset";
 NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 
 
-@interface FlickrPicker ()
+@interface FlickrPicker () <OFFlickrAPIRequestDelegate>
+
+@property (nonatomic, strong, readonly) OFFlickrAPIContext *flickrContext;
+@property (nonatomic, strong, readonly) OFFlickrAPIRequest *flickrRequest;
 
 @property (nonatomic, strong) NSString *userId;
 @property (nonatomic, strong) void (^blockToRunAfterGettingPhotosets)(NSArray*);
@@ -99,8 +103,25 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     return self.flickrContext.OAuthToken.length ? YES : NO;
 }
 
+-(BOOL)requestToken:(NSURL *)authUrl callbackURL:(NSURL *)callbackURL token:(id)token verifier:(id)verifier
+{
+    return OFExtractOAuthCallback(authUrl, callbackURL, &token, &verifier);
+}
+
+-(void) getFullAccessWithToken:(NSString *)token andVerifier:(NSString *)verifier
+{
+    OFFlickrAPIRequest *request = self.flickrRequest;
+    request.sessionInfo = @"kGetAccessTokenStep";
+    [request fetchOAuthAccessTokenWithRequestToken:token verifier:verifier];
+}
 
 #pragma mark Getting stuff from Flickr
+-(NSURL *)getURLForPhoto:(NSDictionary *)photo
+{
+    static NSString *FPFlickrSquareSize = @"q";
+    return [self.flickrContext photoSourceURLFromDictionary:photo size:FPFlickrSquareSize];
+}
+
 -(void)getPhotosets:(void (^)(NSArray *))completion
 {
     self.blockToRunAfterGettingPhotosets = completion;
