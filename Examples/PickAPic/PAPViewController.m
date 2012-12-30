@@ -29,7 +29,7 @@
 }
 
 - (IBAction)pickImage:(id)sender {
-    UIViewController *picker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerControllerWithDelegate:self];
+    UIViewController *picker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerControllerWithDelegate:self authCallbackURL:[NSURL URLWithString:@"pickapic://auth"]];
     NSLog(@"Using picker %@", picker);
     [self presentViewController:picker animated:YES completion:nil];
 }

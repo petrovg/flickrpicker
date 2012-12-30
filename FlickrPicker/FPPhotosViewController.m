@@ -7,7 +7,6 @@
 //
 
 #import "FPPhotosViewController.h"
-#import "ObjectiveFlickr.h"
 #import "FlickrPicker.h"
 #import "FPPhotoViewCell.h"
 

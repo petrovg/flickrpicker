@@ -11,8 +11,9 @@
 #import "FlickrPicker.h"
 #import "NSDictionary+Photoset.h"
 #import "FPPhotosViewController.h"
+#import "FlickrPicker.h"
 
-@interface FPPhotosetsController ()
+@interface FPPhotosetsController ()  <UITableViewDelegate>
 {
     FPPhotosViewController *photosViewController;
 }
@@ -31,22 +32,23 @@
     //[[FlickrPicker sharedFlickrPicker] retrieveSavedAuthTokenAndSecret];
     
     // If we are not authorized, authorize now
+    FlickrPicker *flickrPicker = [FlickrPicker sharedFlickrPicker];
     if (![[FlickrPicker sharedFlickrPicker] isAuthorized])
     {
         // Run this when authorized
-        [[FlickrPicker sharedFlickrPicker] setBlockToRunWhenAuthorized:^{
+        [flickrPicker setBlockToRunWhenAuthorized:^{
 
             // Show activity indicator
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
             
             // Fetch photosets and reload
-            [[FlickrPicker sharedFlickrPicker] getPhotosets:^(NSArray *collatedPhotosets){
+            [flickrPicker getPhotosets:^(NSArray *collatedPhotosets){
                 // This will run when the photosets are here
                 [self.tableView reloadData];
                 [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
                 }];
             }];
-        [[FlickrPicker sharedFlickrPicker] authorize];
+        [flickrPicker authorize];
     }
     else {
         NSLog(@"Already authorized");
@@ -72,13 +74,10 @@
 
 -(void) tableView:tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FPPhotosViewController *photosViewController = self.photosViewController;
-    photosViewController.model = self.model;
-    photosViewController.photoset = [[self.model.collatedPhotosets objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    [self.navigationController pushViewController:photosViewController animated:YES];
+    self.photosViewController.model = self.model;
+    self.photosViewController.photoset = [[self.model.collatedPhotosets objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:self.photosViewController animated:YES];
 }
-
-
 
 
 #pragma mark UITableViewDataSource

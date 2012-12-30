@@ -18,29 +18,30 @@ FlickrPicker is used the same way as a UIImagePickerController - it is created, 
 * Import FlickerPicker.h where you intend to use FlickrPicker
 
 ### Create a callback URL so that your app can be notified after user authorizes it
-### Add Security.framework
+
+
+
+### Add frameworks
+
+* Security.framework
+* CFNetwork.frameworkg
+
 ### Implement the openURL method in your AppDelegate
 
-This is necassary, so that Safari can re-launch your app once the user has authorized access to their Flickr account.
+This is neccessary, so that Safari can re-launch your app once the user has authorized access to their Flickr account. If it was launched using the authorization URL chosen by you (in this case pickapic://auth", it goes off to Flickr and gets an authorization token and secret, which are then stored for further use.
 
-    -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSStrin *)sourceApplication annotation:(id)annotation
+    -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
     {
-        NSLog(@"Opening url %@", url);
-        NSString *token = nil;
-        NSString *verifier = nil;
-        BOOL result = OFExtractOAuthCallback(url, [NSURL URLWithString:@"flickrpicker://auth"], &token, &verifier);
-
-        if (!result) {
-            NSLog(@"Cannot obtain token/secret from URL: %@", [url absoluteString]);
-            return NO;
+        NSLog(@"Request to open url %@", url);
+        static NSString *authCallbackURL = @"pickapic://auth";
+        if ([[url absoluteString] rangeOfString:authCallbackURL].location == 0)
+        {
+            [[FlickrPicker sharedFlickrPicker] requestToken:url callbackURL:[NSURL URLWithString:authCallbackURL]];
         }
-
-        OFFlickrAPIRequest *request = [FlickrPicker sharedFlickrPicker].flickrRequest;
-        request.sessionInfo = @"kGetAccessTokenStep";
-        [request fetchOAuthAccessTokenWithRequestToken:token verifier:verifier];
-
         return YES;
     }
+
+
 
 ### Get and present a FlickrPicker view controller:
 
@@ -74,6 +75,6 @@ FlickrPicker uses ObjectiveFlickr, which is released under the MIT license. Refe
 
 ## TO DO
 
-* Show recent photo as a separate photoset at the top
+* Show recent photos as a separate photoset at the top
 * Test in a popover on iPad
 * Make it only support portrait orientation

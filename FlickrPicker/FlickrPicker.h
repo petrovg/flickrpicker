@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "UINavigationController+UIImagePickerController.h"
 
 @interface FlickrPicker : NSObject
 
 @property (nonatomic, strong, readonly) NSString *userId;
 @property (nonatomic, strong) void (^blockToRunWhenAuthorized)(void);
+@property (nonatomic, strong) NSURL *authCallbackURL;
 
 +(FlickrPicker*)sharedFlickrPicker;
 -(void) authorize;
--(BOOL) requestToken:(NSURL *)authUrl callbackURL:(NSURL *)callbackURL token:(id)token verifier:(id)verifier;
+-(void) requestToken:(NSURL *)authUrl callbackURL:(NSURL *)callbackURL;
 -(void) getFullAccessWithToken:(NSString *)token andVerifier:(NSString *)verifier;
 -(NSURL *)getURLForPhoto:(NSDictionary *)photo;
 -(void) getPhotosets:(void (^)(NSArray*))completion;
@@ -26,6 +28,6 @@
 -(BOOL) isAuthorized;
 -(void) imagePicked:(NSDictionary *)photoInfo;
 -(void) cancel;
--(UIViewController *) flickrImagePickerControllerWithDelegate:(id<UIImagePickerControllerDelegate>)delegate;
+-(UIViewController *) flickrImagePickerControllerWithDelegate:(id<UIImagePickerControllerDelegate>)delegate authCallbackURL:(NSURL *)authCallbackURL;
 
 @end

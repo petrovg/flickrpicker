@@ -26,10 +26,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>CFBundleURLName</key>
-			<string>com.supplesoftware.flickrpicker</string>
+			<string>com.supplesoftware.pickapic</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>flickrpicker</string>
+				<string>pickapic</string>
 			</array>
 		</dict>
 	</array>

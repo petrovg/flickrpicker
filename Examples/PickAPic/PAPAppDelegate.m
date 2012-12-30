@@ -19,18 +19,12 @@
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSLog(@"Opening url %@", url);
-    NSString *token = nil;
-    NSString *verifier = nil;
-    BOOL result = [[FlickrPicker sharedFlickrPicker] requestToken:url callbackURL:[NSURL URLWithString:@"flickrpicker://auth"] token:token verifier:verifier];
-    
-    if (!result) {
-        NSLog(@"Cannot obtain token/secret from URL: %@", [url absoluteString]);
-        return NO;
+    NSLog(@"Request to open url %@", url);
+    static NSString *authCallbackURL = @"pickapic://auth";
+    if ([[url absoluteString] rangeOfString:authCallbackURL].location == 0)
+    {
+        [[FlickrPicker sharedFlickrPicker] requestToken:url callbackURL:[NSURL URLWithString:authCallbackURL]];
     }
-    
-    [[FlickrPicker sharedFlickrPicker] getFullAccessWithToken:token andVerifier:verifier];
-
     return YES;
 }
 

@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "ObjectiveFlickr.h"
 #import "FPFlickrPickerModel.h"
 
 
@@ -18,7 +17,7 @@
 // recently added photos
 //
 
-@interface FPPhotosetsController : UITableViewController <OFFlickrAPIRequestDelegate, UITableViewDelegate>
+@interface FPPhotosetsController : UITableViewController
 
 // The delegate that will be notified when the image picking is complete
 @property (weak, nonatomic) id <UITableViewDelegate> delegate;

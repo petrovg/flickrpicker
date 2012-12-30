@@ -44,7 +44,6 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 {
     OFFlickrAPIContext *flickrContext;
     OFFlickrAPIRequest *flickrRequest;
-    FPPhotosetsController *photosetsController;
     FPFlickrPickerModel *model;
 }
 
@@ -59,7 +58,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
 }
 
 #pragma mark Getting an image picker controller
-- (UIViewController *)flickrImagePickerControllerWithDelegate:(id<UIImagePickerControllerDelegate>)delegate
+- (UIViewController *)flickrImagePickerControllerWithDelegate:(id<UIImagePickerControllerDelegate>)delegate authCallbackURL:(NSURL *)authCallbackURL
 {
     // The UI is rebuilt every time and the existing model is injected
     self.photosetsController = [[FPPhotosetsController alloc] init];
@@ -68,6 +67,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     [flickrPickerController.navigationBar setBarStyle:UIBarStyleBlackTranslucent];
     self.flickrPickerController = flickrPickerController;
     self.delegate = delegate;
+    self.authCallbackURL = authCallbackURL;
     return self.flickrPickerController;
 }
 
@@ -88,7 +88,7 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
         // No store auth data available - initiate authorization session
         NSLog(@"No stored auth data - initiating auth session");
         [self.flickrRequest setSessionInfo:@"kFetchRequestTokenStep"];
-        [self.flickrRequest fetchOAuthRequestTokenWithCallbackURL:[NSURL URLWithString:@"flickrpicker://auth"]];
+        [self.flickrRequest fetchOAuthRequestTokenWithCallbackURL:self.authCallbackURL];
     }
 }
 
@@ -103,9 +103,18 @@ NSString *kFPPhotoSetTypeTag = @"kFPPhotoSetTypeTag";
     return self.flickrContext.OAuthToken.length ? YES : NO;
 }
 
--(BOOL)requestToken:(NSURL *)authUrl callbackURL:(NSURL *)callbackURL token:(id)token verifier:(id)verifier
+-(void)requestToken:(NSURL *)authUrl callbackURL:(NSURL *)callbackURL
 {
-    return OFExtractOAuthCallback(authUrl, callbackURL, &token, &verifier);
+    NSString *token = nil;
+    NSString *verifier = nil;
+    OFExtractOAuthCallback(authUrl, callbackURL, &token, &verifier);
+    
+    [[FlickrPicker sharedFlickrPicker] getFullAccessWithToken:token andVerifier:verifier];
+    //BOOL result = [self requestToken:authUrl callbackURL:[NSURL URLWithString:callbackURL] token:token verifier:verifier];
+    
+    //if (!result) {
+    //    NSLog(@"Cannot obtain token/secret from URL: %@", [authUrl absoluteString]);
+    //}
 }
 
 -(void) getFullAccessWithToken:(NSString *)token andVerifier:(NSString *)verifier
