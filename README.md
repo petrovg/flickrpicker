@@ -1,15 +1,16 @@
 # FlickrPicker
 
-FlickrPicker is a UIImagePickerController-like class that allow you to select images from Flickr.
+FlickrPicker provides a controller similar to UIImagePickerController which allows you to select images from Flickr.
 
-FlickrPicker is used the same way as a UIImagePickerController - it is created, assigned a delegate, presented modally and when it finishes it calls the appropriate method of UIImagePickerDelegate.
+FlickrPicker is used the same way as a UIImagePickerController - it is created with a delegate, presented modally and when it finishes it calls the appropriate method of UIImagePickerDelegate.
 
 
 ## Using FlickrPicker
 
-### Get FlickrPicker for github
+### Get FlickrPicker from github
 
-    git clone https://.....
+    git clone https://github.com/petrovg/flickrpicker
+
 
 ### Add the FlickrPicker project to your project
 
@@ -19,9 +20,17 @@ FlickrPicker is used the same way as a UIImagePickerController - it is created, 
 
 ### Create a callback URL so that your app can be notified after user authorizes it
 
+The callback URL is used to return to your app after the user has authorized it in Safari
+
+* In your app target choose the Info tab
+* Open URL Types
+* Enter a unique identifier, i.e. com.yourdomain.yourapp
+* Enter a url scheme - your app name could be a good candidate
 
 
-### Add frameworks
+### Add dependencies
+
+Go to your target, chose the Build Phases tab and in Link Binary with Libraries, add the following:
 
 * Security.framework
 * CFNetwork.framework
@@ -29,7 +38,7 @@ FlickrPicker is used the same way as a UIImagePickerController - it is created, 
 
 ### Implement the openURL method in your AppDelegate
 
-This is neccessary, so that Safari can re-launch your app once the user has authorized access to their Flickr account. If it was launched using the authorization URL chosen by you (in this case pickapic://auth", it goes off to Flickr and gets an authorization token and secret, which are then stored for further use.
+This is neccessary, so that Safari can re-launch your app once the user has authorized access to their Flickr account. If it was launched using the authorization URL chosen by you (in the example below pickapic://auth", it goes off to Flickr and gets an authorization token and secret, which are then stored for further use.
 
     -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
     {
@@ -48,12 +57,16 @@ This is neccessary, so that Safari can re-launch your app once the user has auth
 
 Import FlickrPicker.h in the file where you intend to use it, get an instance, and present it. E.g. like this:
 
-        UIViewController *picker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerControllerWithDelegate:self];
-        [self presentViewController:picker animated:YES completion:nil];
+    UIViewController *picker = [[FlickrPicker sharedFlickrPicker] flickrImagePickerControllerWithDelegate:self authCallbackURL:[NSURL URLWithString:@"pickapic://auth"]];
+    [self presentViewController:picker animated:YES completion:nil];
 
-The view controller you get is actually a UINavigationController, but you don't need to worry about this - the standard UIImagePickerController is also a UINavigationController, by virtue of subclassing it, but Apple don't won't you to sublass it, so I went for an actual instance of it. There's also some dodgy going-ons with the UIImagePickerController's delegate shadowing the UINavigationController delegate - in this way I avoid having to use the same delegate property for both.
+
+The view controller you get is actually a UINavigationController, but you don't need to worry about this - the standard UIImagePickerController is also a UINavigationController. The authCallbackURL must match the one given in the AppDelegate (see above).
+
 
 ### Dismiss the controller when an image is selected or selection is cancelled
+
+Just like with a standard UIImagePickerController, the FlickrPicker controller must be dismissed after the user picks an image or cancels:
 
     -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
     {
