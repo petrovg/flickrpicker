@@ -24,7 +24,8 @@ FlickrPicker is used the same way as a UIImagePickerController - it is created, 
 ### Add frameworks
 
 * Security.framework
-* CFNetwork.frameworkg
+* CFNetwork.framework
+* SystemConfiguration.framework
 
 ### Implement the openURL method in your AppDelegate
 

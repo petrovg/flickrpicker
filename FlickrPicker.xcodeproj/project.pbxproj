@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0012429D16904EC500CAFEEC /* libObjectiveFlickr.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 003810F31677D0ED00156B29 /* libObjectiveFlickr.a */; };
 		001242FC1690530200CAFEEC /* UINavigationController+UIImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001242FB1690530200CAFEEC /* UINavigationController+UIImagePickerController.m */; };
+		0012437416919ABD00CAFEEC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0012437316919ABD00CAFEEC /* CFNetwork.framework */; };
+		0012437616919AE900CAFEEC /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0012437516919AE900CAFEEC /* Security.framework */; };
+		0012437816919B4100CAFEEC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0012437716919B4100CAFEEC /* SystemConfiguration.framework */; };
 		0030BF491685D4AE003817A0 /* SimpleKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030BF481685D4AE003817A0 /* SimpleKeychain.m */; };
 		0030BF5A168B73A2003817A0 /* FPFlickrPickerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0030BF59168B73A2003817A0 /* FPFlickrPickerModel.m */; };
 		0030BF66168C8CAC003817A0 /* Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 0030BF65168C8CAC003817A0 /* Gray.png */; };
@@ -23,7 +26,6 @@
 		00DDE595167106EA009E811A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE594167106EA009E811A /* CoreGraphics.framework */; };
 		00DDE5B2167112E4009E811A /* libFlickrPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DDE5711670F663009E811A /* libFlickrPicker.a */; };
 		00DDE5B916721EE9009E811A /* FPPhotosetTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */; };
-		00EC1124167B17AA0013B3EC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */; };
 		00EC1138167D2C3F0013B3EC /* FPPhotosViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1134167D2C030013B3EC /* FPPhotosViewController.h */; };
 		00EC1139167D2C3F0013B3EC /* FPPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1135167D2C030013B3EC /* FPPhotosViewController.m */; };
 		00EC113A167D2C3F0013B3EC /* FPPhotoViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 00EC1136167D2C040013B3EC /* FPPhotoViewCell.h */; };
@@ -69,9 +71,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		001242D71690506D00CAFEEC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		001242FA1690530200CAFEEC /* UINavigationController+UIImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+UIImagePickerController.h"; sourceTree = "<group>"; };
 		001242FB1690530200CAFEEC /* UINavigationController+UIImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+UIImagePickerController.m"; sourceTree = "<group>"; };
+		0012437316919ABD00CAFEEC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		0012437516919AE900CAFEEC /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0012437716919B4100CAFEEC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		0030BF471685D4AE003817A0 /* SimpleKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleKeychain.h; sourceTree = "<group>"; };
 		0030BF481685D4AE003817A0 /* SimpleKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleKeychain.m; sourceTree = "<group>"; };
 		0030BF58168B73A2003817A0 /* FPFlickrPickerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPFlickrPickerModel.h; sourceTree = "<group>"; };
@@ -93,7 +97,6 @@
 		00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libObjectiveFlickr.a; path = "../../../Library/Developer/Xcode/DerivedData/FlickrPicker-fqstxhqwpvfwrrezzyvkzobliqwv/Build/Products/Debug-iphoneos/libObjectiveFlickr.a"; sourceTree = "<group>"; };
 		00DDE5B716721EE9009E811A /* FPPhotosetTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPPhotosetTableCell.h; sourceTree = "<group>"; };
 		00DDE5B816721EE9009E811A /* FPPhotosetTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FPPhotosetTableCell.m; sourceTree = "<group>"; };
-		00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		00EC1134167D2C030013B3EC /* FPPhotosViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPPhotosViewController.h; sourceTree = "<group>"; };
 		00EC1135167D2C030013B3EC /* FPPhotosViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FPPhotosViewController.m; sourceTree = "<group>"; };
 		00EC1136167D2C040013B3EC /* FPPhotoViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FPPhotoViewCell.h; sourceTree = "<group>"; };
@@ -127,7 +130,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00EC1124167B17AA0013B3EC /* SystemConfiguration.framework in Frameworks */,
+				0012437816919B4100CAFEEC /* SystemConfiguration.framework in Frameworks */,
+				0012437616919AE900CAFEEC /* Security.framework in Frameworks */,
+				0012437416919ABD00CAFEEC /* CFNetwork.framework in Frameworks */,
 				00DDE5B2167112E4009E811A /* libFlickrPicker.a in Frameworks */,
 				00DDE592167106EA009E811A /* UIKit.framework in Frameworks */,
 				00DDE593167106EA009E811A /* Foundation.framework in Frameworks */,
@@ -149,9 +154,10 @@
 		00DDE5661670F663009E811A = {
 			isa = PBXGroup;
 			children = (
-				001242D71690506D00CAFEEC /* MobileCoreServices.framework */,
+				0012437716919B4100CAFEEC /* SystemConfiguration.framework */,
+				0012437516919AE900CAFEEC /* Security.framework */,
+				0012437316919ABD00CAFEEC /* CFNetwork.framework */,
 				0030BF65168C8CAC003817A0 /* Gray.png */,
-				00EC1123167B17AA0013B3EC /* SystemConfiguration.framework */,
 				00DDE5B516720E2C009E811A /* libObjectiveFlickr.a */,
 				00DDE5841671053F009E811A /* ObjectiveFlickr.xcodeproj */,
 				00DDE5761670F663009E811A /* Source */,
